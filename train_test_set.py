@@ -6,6 +6,13 @@ from PIL import Image
 import os
 import torchvision.transforms as transforms
 
+# Check for GPU availability
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f'Using device: {device}')
+if torch.cuda.is_available():
+    print(f'GPU Device: {torch.cuda.get_device_name(0)}')
+    print(f'Number of GPUs available: {torch.cuda.device_count()}')
+
 # Quick dataset class
 class SpectrogramDataset(Dataset):
     def __init__(self, folder):
@@ -52,12 +59,13 @@ class SimpleAutoencoder(nn.Module):
 # Train
 dataset = SpectrogramDataset('final_project/data/Test set - Dense spectrograms')
 dataloader = DataLoader(dataset, batch_size=4, shuffle=True)
-model = SimpleAutoencoder()
+model = SimpleAutoencoder().to(device)  # Move model to GPU if available
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 criterion = nn.MSELoss()
 
 for epoch in range(10):
     for data in dataloader:
+        data = data.to(device)  # Move data to GPU if available
         optimizer.zero_grad()
         output = model(data)
         loss = criterion(output, data)
@@ -72,7 +80,12 @@ torch.save(model.state_dict(), 'final_project/marine_autoencoder_test_set.pth')
 model.eval()
 with torch.no_grad():
     sample_batch = next(iter(dataloader))
+    sample_batch = sample_batch.to(device)  # Move data to GPU if available
     reconstructed = model(sample_batch)
+    
+    # Move tensors back to CPU for visualization
+    sample_batch = sample_batch.cpu()
+    reconstructed = reconstructed.cpu()
     
     # Save original vs reconstructed
     import matplotlib.pyplot as plt

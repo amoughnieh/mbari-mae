@@ -198,3 +198,6 @@ data/**/*.zip
 
 # personal venv
 venv/
+
+notebook/downstream/data
+notebook/downstream/lightning_logs

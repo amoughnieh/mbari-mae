@@ -1,0 +1,23 @@
+task:
+  data: /home/incantator/Documents/gt-dl-cs7643/final_project/data/data_chunks/audio_chunks-MARS-20171030T000000Z-10secs/
+  max_sample_size: 160000
+  mask_type: chunk_mask
+
+model:
+  encoder_layers: 6          # change to 12 later
+  decoder_layers: 2
+  random_mask_prob: 0.75
+
+dataset:
+  max_tokens: 8388608
+
+optimization:
+  max_update: 1000           # change to 550000 later
+
+distributed_training:
+  distributed_world_size: 1
+  nprocs_per_node: 1
+
+hydra:
+  run:
+    dir: /home/incantator/Documents/gt-dl-cs7643/final_project/MAE-AST-Public/debug_run_mbari

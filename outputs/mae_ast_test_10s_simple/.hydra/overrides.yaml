@@ -1,0 +1,12 @@
+- task.data=/home/incantator/Documents/mbari-mae/data/manifests/audio_chunks-MARS-20171030T000000Z-10secs
+- common.user_dir=/home/incantator/Documents/mbari-mae/mae_ast
+- model._name=mae_ast
+- criterion._name=mae_ast
+- dataset.max_tokens=25000
+- task.max_sample_size=20000
+- +task.max_keep_size=20000
+- task.sample_rate=2000
+- optimization.max_update=100
+- common.log_interval=10
+- distributed_training.distributed_world_size=1
+- distributed_training.nprocs_per_node=1

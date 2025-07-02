@@ -1,0 +1,111 @@
+# MBARI 2kHz Audio Configuration
+# 
+# Required changes from original mae_ast.yaml for 2kHz data:
+# 1. task.max_sample_size: 40000 → 20000 (10-second audio segments at 2kHz = 20,000 samples)
+# 2. task.random_crop: true → false (data is pre-segmented into fixed 10s chunks)
+# 3. dataset.max_tokens: 1048576 → 256000 (shorter segments produce fewer tokens ~128k vs 1M)
+#
+# Optional changes:
+# - model.encoder_layers: 4 → 6
+# - optimization.max_update: 400000 → 100000
+# These changes are optional so do whatever you want with them.
+
+# @package _group_
+
+common:
+  fp16: true
+  log_format: json
+  log_interval: 200
+  seed: 1337
+  tensorboard_logdir: tblog
+
+checkpoint:
+  save_interval_updates: 25000
+  keep_interval_updates: 1
+  no_epoch_checkpoints: true
+
+distributed_training:
+  ddp_backend: no_c10d
+  distributed_backend: 'nccl'
+  distributed_world_size: 1
+  nprocs_per_node: 1
+  find_unused_parameters: true
+
+task:
+  _name: mae_ast_pretraining
+  data: ???
+  feature_type: "fbank"  # Use mel filterbank features as intended
+  mask_type: "random_mask"
+  sample_rate: 2000  # 2kHz audio
+  max_sample_size: 20000  # 10 seconds at 2kHz
+  min_sample_size: 20000  # 10 seconds at 2kHz
+  feature_rate: 100  # Standard feature rate: 100 frames per second
+  feature_dim: 128  # 128 mel filter banks
+  pad_audio: false
+  random_crop: false  # No random crop since we have fixed size chunks
+  normalize: false
+  deltas: false
+
+dataset:
+  num_workers: 4
+  max_tokens: 256000  # Increased for fbank features: ~1000 time frames * 128 mel bins
+  skip_invalid_size_inputs_valid_test: true
+  validate_interval: 5
+  validate_interval_updates: 10000
+
+criterion:
+  _name: mae_ast
+  classification_weight: 1
+  reconstruction_weight: 10
+
+optimization:
+  max_update: 100000  # Reduced for testing
+  lr: [0.0001]
+  clip_norm: 10.0
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-06
+  weight_decay: 0.01
+
+lr_scheduler:
+  _name: polynomial_decay
+  warmup_updates: 8000
+
+model:
+  _name: mae_ast
+  dropout_input: 0.1
+  dropout: 0.1
+  attention_dropout: 0.1
+  activation_dropout: 0.0
+  feature_grad_mult: 0.1
+  encoder_layerdrop: 0.05
+  decoder_layerdrop: 0.0
+  encoder_layers: 6  # Reduced for testing
+  decoder_layers: 2
+  random_mask_prob: 0.75
+  enc_conv_pos: false
+  enc_sine_pos: true
+  dec_conv_pos: false
+  dec_sine_pos: true
+  # Standard 16x16 patches for spectrograms
+  ast_kernel_size_chan: 16
+  ast_kernel_size_time: 16
+  ast_kernel_stride_chan: 16
+  ast_kernel_stride_time: 16
+
+hydra:
+  job:
+    config:
+      override_dirname:
+        kv_sep: '-'
+        item_sep: '__'
+        exclude_keys:
+          - run
+          - task.data
+  run:
+    dir: ???
+  sweep:
+    dir: ???
+    subdir: ${hydra.job.config_name}__${hydra.job.override_dirname}

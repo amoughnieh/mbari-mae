@@ -177,10 +177,8 @@ cython_debug/
 *.csv
 
 # Ignore data folder contents but keep folder structure
-data/*
 data/.gitkeep
 data/*/.gitkeep
-data/*/
 
 # Ignore large data files but keep folder structure
 data/**/*.wav

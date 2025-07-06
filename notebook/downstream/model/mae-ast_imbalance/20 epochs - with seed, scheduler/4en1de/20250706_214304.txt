@@ -11,7 +11,7 @@ WMMDClassifier(
       (enc_sine_pos_embed): SinusoidalPositionalEncoding()
       (encoder): TransformerEncoder(
         (layers): ModuleList(
-          (0-1): 2 x TransformerSentenceEncoderLayer(
+          (0-3): 4 x TransformerSentenceEncoderLayer(
             (self_attn): MultiheadAttention(
               (dropout_module): FairseqDropout()
               (k_proj): Linear(in_features=768, out_features=768, bias=True)
@@ -127,11 +127,11 @@ Hyperparameters:
 
 Test results:
 {
-    "test_loss": 1.3492323160171509,
-    "test_acc": 0.6312684416770935,
-    "test_precision": 0.6229105591773987,
-    "test_recall": 0.5299901962280273,
-    "test_f1": 0.5604722499847412
+    "test_loss": 1.2313071489334106,
+    "test_acc": 0.6637167930603027,
+    "test_precision": 0.6553589105606079,
+    "test_recall": 0.5580137968063354,
+    "test_f1": 0.5899708867073059
 }
 
 Epochs trained: 21

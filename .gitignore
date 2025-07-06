@@ -189,6 +189,7 @@ data/**/*.pth
 data/**/*.zip
 *.pth
 *.pt
+*.ckpt
 *.zip
 
 # But allow .gitkeep files everywhere to preserve folder structure

@@ -11,7 +11,7 @@ WMMDClassifier(
       (enc_sine_pos_embed): SinusoidalPositionalEncoding()
       (encoder): TransformerEncoder(
         (layers): ModuleList(
-          (0-3): 4 x TransformerSentenceEncoderLayer(
+          (0-1): 2 x TransformerSentenceEncoderLayer(
             (self_attn): MultiheadAttention(
               (dropout_module): FairseqDropout()
               (k_proj): Linear(in_features=768, out_features=768, bias=True)
@@ -88,7 +88,7 @@ Hyperparameters:
     "weight_decay": 0.05,
     "max_epochs": 20,
     "backbone": "mae-ast",
-    "ckpt_path": "notebook/downstream/load_model/random-4en1de.pt",
+    "ckpt_path": "notebook/downstream/load_model/random-2en1de-seed42.pt",
     "finetune": true,
     "class_weights": [
         0.9373271889400921,
@@ -127,11 +127,11 @@ Hyperparameters:
 
 Test results:
 {
-    "test_loss": 1.7223942279815674,
-    "test_acc": 0.5545722842216492,
-    "test_precision": 0.5442477464675903,
-    "test_recall": 0.45427724719047546,
-    "test_f1": 0.4837758541107178
+    "test_loss": 1.9981276988983154,
+    "test_acc": 0.4601770043373108,
+    "test_precision": 0.44985249638557434,
+    "test_recall": 0.3657817244529724,
+    "test_f1": 0.39331352710723877
 }
 
 Epochs trained: 21

@@ -1,6 +1,6 @@
 backbone: mae-ast
 backbone_lr: 1.0e-05
-ckpt_path: notebook/downstream/load_model/random-2en1de.pt
+ckpt_path: notebook/downstream/load_model/random-2en1de-seed42.pt
 class_weights: !!python/object/apply:numpy._core.multiarray._reconstruct
   args:
   - !!python/name:numpy.ndarray ''

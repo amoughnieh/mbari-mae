@@ -88,7 +88,7 @@ Hyperparameters:
     "weight_decay": 0.05,
     "max_epochs": 20,
     "backbone": "mae-ast",
-    "ckpt_path": "notebook/downstream/load_model/random-2en1de.pt",
+    "ckpt_path": "notebook/downstream/load_model/random-2en1de-seed42.pt",
     "finetune": true,
     "class_weights": [
         0.9373271889400921,
@@ -127,11 +127,11 @@ Hyperparameters:
 
 Test results:
 {
-    "test_loss": 1.4022549390792847,
-    "test_acc": 0.6076695919036865,
-    "test_precision": 0.5993116497993469,
-    "test_recall": 0.5152408480644226,
-    "test_f1": 0.5427730083465576
+    "test_loss": 1.3964496850967407,
+    "test_acc": 0.5899705290794373,
+    "test_precision": 0.5830875635147095,
+    "test_recall": 0.4931170344352722,
+    "test_f1": 0.5231074690818787
 }
 
 Epochs trained: 21

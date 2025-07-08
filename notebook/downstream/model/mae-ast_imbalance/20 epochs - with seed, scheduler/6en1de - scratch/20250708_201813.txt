@@ -83,12 +83,12 @@ WMMDClassifier(
 Hyperparameters:
 {
     "num_classes": 31,
-    "backbone_lr": 0.0001,
+    "backbone_lr": 1e-05,
     "head_lr": 0.0001,
     "weight_decay": 0.05,
     "max_epochs": 20,
     "backbone": "mae-ast",
-    "ckpt_path": "notebook/downstream/load_model/random-6en1de.pt",
+    "ckpt_path": "notebook/downstream/load_model/random-6en1de-seed42.pt",
     "finetune": true,
     "class_weights": [
         0.9373271889400921,
@@ -127,11 +127,11 @@ Hyperparameters:
 
 Test results:
 {
-    "test_loss": 1.664811611175537,
-    "test_acc": 0.5103244781494141,
-    "test_precision": 0.5004916787147522,
-    "test_recall": 0.40609636902809143,
-    "test_f1": 0.43657827377319336
+    "test_loss": 1.6290234327316284,
+    "test_acc": 0.5486725568771362,
+    "test_precision": 0.5383480191230774,
+    "test_recall": 0.44542768597602844,
+    "test_f1": 0.47590965032577515
 }
 
 Epochs trained: 21

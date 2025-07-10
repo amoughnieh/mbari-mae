@@ -2,26 +2,41 @@
 
 Self-supervised pretraining of Audio Spectrogram Transformers on MBARI marine acoustic data.
 
-# ❗❗❗Please Read ❗❗❗
-- Every uploaded **notebook** file should print out all the results and work within the current project structure.
-- Before pushing upstream, notify in Microsoft teams, wait for a minute, and then push (naive but don't want to burden everyone anymore).
-- When adding a data folder, create a file ```.gitkeep``` inside the folder, which will prevent uploading the files inside but retain the folder structure.
-- Default venv name is ```venv``` which is included in ```.gitignore```; add yours if you want to use a different name.
-
 ## 🚀 Quick Start
 
 1. **Setup Environment**
+
+   Due to different package requirements, there are two separate environments to run the two models used in the project. The mae-ast model works with `Python 3.9` with the following requirement file:
    ```bash
-   # Edit requirements.txt for your CUDA version (cu121, cu118, etc.)
    pip install -r requirements.txt
    ```
+   The downstream model works with `Python 3.11` with the following requirement file:
+   ```bash
+   pip install -r requirements_downstream.txt
+   ```
+   You need to install Pytorch version compatible with your GPU driver. In particular, the downstream model requires `Pytorch version>=2.6`.
 
-2. **Generate tsv Files If Necessary**
+2. **Data**
+
+   MBARI dataset can be downloaded from [here](https://docs.mbari.org/pacific-sound/quickstart/); you might want to install `aws-cli` from [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+
+   Downstream Watkins dataset can be downloaded using `notebook/downstream/download_watkins.py`.
+
+
+3. **Audio Clips & tsv Generator**
+
+   You can use `make_clips_flexible.py` to automatically generate clips from the downloaded audio files from MBARI dataset. In case you want to only generate tsv file from the audio clips, you could use `generate_tsv_manifests.py`. For example,
    ```bash
    python scripts/data_processing/generate_tsv_manifests.py --input_folder audio_chunks-MARS-20171030T000000Z-10secs
-   ---
+   ```
 
-3. For 2khz data, please have a look at ```mbari_10s_2khz.yaml``` and ```train_10s_simple.py```.
+4. **Experiments**
+
+   As for MBARI dataset with mae-ast, you could use `mae_ast_batch_sweep.sh` or similarly named python files to run through the parameters of interest.
+
+   As for WAtkins dataset, refer to the notebook files for experiments.
+
+
 
 ## ⚠️ Important Code Locations and Usage
 Locations:
@@ -32,29 +47,5 @@ data/manifests          # related tsv folders
 config
 outputs
 ```
-Runs:
-```
-python scripts/data_processing/generate_tsv_manifests.py --input_folder audio_chunks-MARS-20171030T000000Z-10secs
-```
-You can check the relevant optional parameters in the codes.
 
-## 📁 Experiment Structure
 
-Each experiment should be organized as (proposed version, feel free to edit and discuss):
-```
-experiments/exp_XXX_description/
-├── config.yaml         # Exact configuration used
-├── checkpoints/        # Model checkpoints (.pt files)
-├── logs/               # Training logs (tensorboard, text logs)
-├── results/            # Metrics and evaluations (.json, .txt)
-├── figures/            # Plots and visualizations (.png, .pdf)
-└── README.md           # Experiment notes and findings
-```
-
-### 🚧 In Progress / TODO
-- **TSV manifest generator** - should be added.
-- **Training pipeline**
-
-### 💡 Other Stuff ###
-- Edit requirements.txt for your CUDA version.
-- Feel free to edit .gitignore as needed.

@@ -1,0 +1,7 @@
+encoder_layers=6
+decoder_layers=2
+max_tokens=1048576
+warmup_updates=4000
+update_freq=8
+lr=0.0001
+random_mask_prob=0.75

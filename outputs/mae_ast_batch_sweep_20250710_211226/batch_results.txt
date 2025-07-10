@@ -1,0 +1,107 @@
+MAE-AST Parameter Sweep Started at Thu Jul 10 09:12:26 PM KST 2025
+Output directory: /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226
+Data directory: /home/incantator/Documents/mbari-mae/data/audio_chunks-MARS-20171030T000000Z-10secs
+================================================
+Starting parameter sweep with configurations:
+Starting config_01_2enc_1dec_base at Thu Jul 10 09:12:26 PM KST 2025
+Config: enc=2, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_01_2enc_1dec_base completed successfully in 00h:06m:05s
+------------------------------------------------
+Starting config_02_4enc_1dec_base at Thu Jul 10 09:18:31 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_02_4enc_1dec_base completed successfully in 00h:06m:44s
+------------------------------------------------
+Starting config_03_6enc_1dec_base at Thu Jul 10 09:25:15 PM KST 2025
+Config: enc=6, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_03_6enc_1dec_base completed successfully in 00h:07m:29s
+------------------------------------------------
+Starting config_04_8enc_1dec_base at Thu Jul 10 09:32:44 PM KST 2025
+Config: enc=8, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_04_8enc_1dec_base completed successfully in 00h:08m:02s
+------------------------------------------------
+Starting config_05_4enc_1dec_large_tokens at Thu Jul 10 09:40:46 PM KST 2025
+Config: enc=4, dec=1, tokens=1400000, warmup=8000, freq=8, lr=0.0001, mask=0.75
+✓ config_05_4enc_1dec_large_tokens completed successfully in 00h:07m:26s
+------------------------------------------------
+Starting config_06_6enc_1dec_large_tokens at Thu Jul 10 09:48:12 PM KST 2025
+Config: enc=6, dec=1, tokens=1400000, warmup=8000, freq=8, lr=0.0001, mask=0.75
+✓ config_06_6enc_1dec_large_tokens completed successfully in 00h:08m:07s
+------------------------------------------------
+Starting config_07_4enc_1dec_large_warmup at Thu Jul 10 09:56:19 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=16000, freq=8, lr=0.0001, mask=0.75
+✓ config_07_4enc_1dec_large_warmup completed successfully in 00h:06m:39s
+------------------------------------------------
+Starting config_08_6enc_1dec_large_warmup at Thu Jul 10 10:02:58 PM KST 2025
+Config: enc=6, dec=1, tokens=1048576, warmup=16000, freq=8, lr=0.0001, mask=0.75
+✓ config_08_6enc_1dec_large_warmup completed successfully in 00h:07m:18s
+------------------------------------------------
+Starting config_09_4enc_1dec_high_lr at Thu Jul 10 10:10:16 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0005, mask=0.75
+✓ config_09_4enc_1dec_high_lr completed successfully in 00h:06m:37s
+------------------------------------------------
+Starting config_10_6enc_1dec_high_lr at Thu Jul 10 10:16:53 PM KST 2025
+Config: enc=6, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0005, mask=0.75
+✓ config_10_6enc_1dec_high_lr completed successfully in 00h:07m:20s
+------------------------------------------------
+Starting config_11_4enc_1dec_low_mask at Thu Jul 10 10:24:13 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.65
+✓ config_11_4enc_1dec_low_mask completed successfully in 00h:06m:54s
+------------------------------------------------
+Starting config_12_4enc_1dec_high_mask at Thu Jul 10 10:31:07 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.85
+✓ config_12_4enc_1dec_high_mask completed successfully in 00h:06m:24s
+------------------------------------------------
+Starting config_13_4enc_1dec_low_freq at Thu Jul 10 10:37:31 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=4, lr=0.0001, mask=0.75
+✓ config_13_4enc_1dec_low_freq completed successfully in 00h:03m:41s
+------------------------------------------------
+Starting config_14_4enc_1dec_high_freq at Thu Jul 10 10:41:12 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=4000, freq=16, lr=0.0001, mask=0.75
+✓ config_14_4enc_1dec_high_freq completed successfully in 00h:10m:04s
+------------------------------------------------
+Starting config_15_4enc_2dec_base at Thu Jul 10 10:51:16 PM KST 2025
+Config: enc=4, dec=2, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_15_4enc_2dec_base completed successfully in 00h:08m:02s
+------------------------------------------------
+Starting config_16_6enc_2dec_base at Thu Jul 10 10:59:18 PM KST 2025
+Config: enc=6, dec=2, tokens=1048576, warmup=4000, freq=8, lr=0.0001, mask=0.75
+✓ config_16_6enc_2dec_base completed successfully in 00h:08m:57s
+------------------------------------------------
+Starting config_17_optimal_small at Thu Jul 10 11:08:15 PM KST 2025
+Config: enc=4, dec=1, tokens=1048576, warmup=8000, freq=8, lr=0.0003, mask=0.75
+✓ config_17_optimal_small completed successfully in 00h:07m:06s
+------------------------------------------------
+Starting config_18_optimal_medium at Thu Jul 10 11:15:21 PM KST 2025
+Config: enc=6, dec=1, tokens=1400000, warmup=16000, freq=8, lr=0.0002, mask=0.75
+✓ config_18_optimal_medium completed successfully in 00h:08m:57s
+------------------------------------------------
+Starting config_19_optimal_large at Thu Jul 10 11:24:18 PM KST 2025
+Config: enc=8, dec=1, tokens=1400000, warmup=32000, freq=4, lr=0.0001, mask=0.85
+✗ config_19_optimal_large failed after 00h:03m:53s
+------------------------------------------------
+================================================
+All configurations completed at Thu Jul 10 11:28:11 PM KST 2025
+Generating summary...
+Summary of results:
+✓ config_01_2enc_1dec_base: Training completed successfully
+✓ config_02_4enc_1dec_base: Training completed successfully
+✓ config_03_6enc_1dec_base: Training completed successfully
+✓ config_04_8enc_1dec_base: Training completed successfully
+✓ config_05_4enc_1dec_large_tokens: Training completed successfully
+✓ config_06_6enc_1dec_large_tokens: Training completed successfully
+✓ config_07_4enc_1dec_large_warmup: Training completed successfully
+✓ config_08_6enc_1dec_large_warmup: Training completed successfully
+✓ config_09_4enc_1dec_high_lr: Training completed successfully
+✓ config_10_6enc_1dec_high_lr: Training completed successfully
+✓ config_11_4enc_1dec_low_mask: Training completed successfully
+✓ config_12_4enc_1dec_high_mask: Training completed successfully
+✓ config_13_4enc_1dec_low_freq: Training completed successfully
+✓ config_14_4enc_1dec_high_freq: Training completed successfully
+✓ config_15_4enc_2dec_base: Training completed successfully
+✓ config_16_6enc_2dec_base: Training completed successfully
+✓ config_17_optimal_small: Training completed successfully
+✓ config_18_optimal_medium: Training completed successfully
+✓ config_19_optimal_large: Training completed successfully
+================================================
+Results saved in: /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226
+To analyze results, check individual config directories for checkpoints and logs

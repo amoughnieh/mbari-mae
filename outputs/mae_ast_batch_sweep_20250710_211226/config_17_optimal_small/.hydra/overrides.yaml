@@ -1,0 +1,16 @@
+- common.user_dir=/home/incantator/Documents/mbari-mae/mae_ast
+- task.data=/home/incantator/Documents/mbari-mae/data/audio_chunks-MARS-20171030T000000Z-10secs
+- model._name=mae_ast
+- criterion._name=mae_ast
+- model.encoder_layers=4
+- model.decoder_layers=1
+- dataset.max_tokens=1048576
+- lr_scheduler.warmup_updates=8000
+- optimization.update_freq=[8]
+- optimization.lr=[0.0003]
+- model.random_mask_prob=0.75
+- optimization.max_update=300
+- dataset.validate_interval=5
+- dataset.validate_interval_updates=100
+- checkpoint.save_interval_updates=100
+- common.log_interval=100

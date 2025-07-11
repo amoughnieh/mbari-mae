@@ -25,7 +25,9 @@ Self-supervised pretraining of Audio Spectrogram Transformers on MBARI marine ac
 
 3. **Audio Clips & tsv Generator**
 
-   You can use `make_clips_flexible.py` to automatically generate clips from the downloaded audio files from MBARI dataset. In case you want to only generate tsv file from the audio clips, you could use `generate_tsv_manifests.py`. For example,
+   You can use `make_clips_flexible.py` to automatically generate clips from the downloaded audio files from MBARI dataset.
+   
+   In case you want to only generate tsv file from the audio clips, you could use `generate_tsv_manifests.py`. For example,
    ```bash
    python scripts/data_processing/generate_tsv_manifests.py --input_folder audio_chunks-MARS-20171030T000000Z-10secs
    ```
@@ -34,7 +36,7 @@ Self-supervised pretraining of Audio Spectrogram Transformers on MBARI marine ac
 
    As for MBARI dataset with mae-ast, you could use `mae_ast_batch_sweep.sh` or similarly named python files to run through the parameters of interest.
 
-   As for WAtkins dataset, refer to the notebook files for experiments.
+   As for Watkins dataset, refer to the notebook files for experiments.
 
 
 

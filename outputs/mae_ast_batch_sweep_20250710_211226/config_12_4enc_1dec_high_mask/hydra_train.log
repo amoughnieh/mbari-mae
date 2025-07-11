@@ -1,0 +1,1033 @@
+[2025-07-10 22:31:09,603][fairseq_cli.train][INFO] - {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'json', 'log_file': None, 'aim_repo': None, 'aim_run_hash': None, 'tensorboard_logdir': 'tblog', 'wandb_project': None, 'azureml_logging': False, 'seed': 1337, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': '/home/incantator/Documents/mbari-mae/mae_ast', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_num_procs': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'no_c10d', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'gradient_as_bucket_view': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_base_algorithm': 'localsgd', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False, 'not_fsdp_flatten_parameters': False}, 'dataset': {'_name': None, 'num_workers': 6, 'skip_invalid_size_inputs_valid_test': True, 'max_tokens': 1048576, 'batch_size': None, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 5, 'validate_interval_updates': 100, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 1048576, 'batch_size_valid': None, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0, 'grouped_shuffling': False, 'update_epoch_batch_itr': False, 'update_ordered_indices_seed': False}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 300, 'stop_time_hours': 0.0, 'clip_norm': 10.0, 'sentence_avg': False, 'update_freq': [8], 'lr': [0.0001], 'stop_min_lr': -1.0, 'use_bmuf': False, 'skip_remainder_batch': False}, 'checkpoint': {'_name': None, 'save_dir': 'checkpoints', 'restore_file': 'checkpoint_last.pt', 'continue_once': None, 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 100, 'keep_interval_updates': 1, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False, 'eos_token': None}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'mae_ast', 'ast_kernel_size_chan': 16, 'ast_kernel_size_time': 16, 'ast_kernel_stride_chan': 16, 'ast_kernel_stride_time': 16, 'encoder_layers': 4, 'encoder_embed_dim': 768, 'encoder_ffn_embed_dim': 3072, 'encoder_attention_heads': 12, 'activation_fn': gelu, 'layer_norm_first': False, 'feature_grad_mult': 0.1, 'use_post_enc_proj': False, 'decoder_embed_dim': 768, 'decoder_layers': 1, 'decoder_layerdrop': 0.0, 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'encoder_layerdrop': 0.05, 'dropout_input': 0.1, 'random_mask_prob': 0.85, 'mask_length': 10, 'mask_selection': static, 'mask_other': 0.0, 'no_mask_overlap': False, 'mask_min_space': 0, 'conv_pos': 128, 'conv_pos_groups': 16, 'checkpoint_activations': False, 'max_token_length': 48000, 'enc_sine_pos': True, 'enc_conv_pos': False, 'dec_sine_pos': True, 'dec_conv_pos': False}, 'task': {'_name': 'mae_ast_pretraining', 'data': '/home/incantator/Documents/mbari-mae/data/audio_chunks-MARS-20171030T000000Z-10secs', 'sample_rate': 2000, 'normalize': False, 'enable_padding': False, 'max_keep_size': None, 'max_sample_size': 40000, 'min_sample_size': 5000, 'random_crop': True, 'pad_audio': False, 'feature_type': 'fbank', 'feature_rate': 100, 'feature_dim': 128, 'deltas': False, 'mask_spans': False, 'mask_type': random_mask}, 'criterion': {'_name': 'mae_ast', 'reconstruction_weight': 10.0, 'classification_weight': 1.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9,0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'fp16_adam_stats': False, 'tpu': False, 'lr': [0.0001]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 300.0, 'lr': [0.0001]}, 'scoring': None, 'bpe': None, 'tokenizer': None, 'ema': {'_name': None, 'store_ema': False, 'ema_decay': 0.9999, 'ema_start_update': 0, 'ema_seed_model': None, 'ema_update_freq': 1, 'ema_fp32': False}, 'job_logging_cfg': {'version': 1, 'formatters': {'simple': {'format': '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'}}, 'handlers': {'console': {'class': 'logging.StreamHandler', 'formatter': 'simple', 'stream': 'ext://sys.stdout'}, 'file': {'class': 'logging.FileHandler', 'formatter': 'simple', 'filename': 'hydra_train.log'}}, 'root': {'level': 'INFO', 'handlers': ['console', 'file']}, 'disable_existing_loggers': False}}
+[2025-07-10 22:31:09,604][mae_ast.tasks.mae_ast_pretraining][INFO] - current directory is /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask
+[2025-07-10 22:31:09,604][mae_ast.tasks.mae_ast_pretraining][INFO] - MAEPretrainingTask Config {'_name': 'mae_ast_pretraining', 'data': '/home/incantator/Documents/mbari-mae/data/audio_chunks-MARS-20171030T000000Z-10secs', 'sample_rate': 2000, 'normalize': False, 'enable_padding': False, 'max_keep_size': None, 'max_sample_size': 40000, 'min_sample_size': 5000, 'random_crop': True, 'pad_audio': False, 'feature_type': 'fbank', 'feature_rate': 100, 'feature_dim': 128, 'deltas': False, 'mask_spans': False, 'mask_type': random_mask}
+[2025-07-10 22:31:09,606][mae_ast.models.mae_ast][INFO] - MAEModel Config: {'_name': 'mae_ast', 'ast_kernel_size_chan': 16, 'ast_kernel_size_time': 16, 'ast_kernel_stride_chan': 16, 'ast_kernel_stride_time': 16, 'encoder_layers': 4, 'encoder_embed_dim': 768, 'encoder_ffn_embed_dim': 3072, 'encoder_attention_heads': 12, 'activation_fn': gelu, 'layer_norm_first': False, 'feature_grad_mult': 0.1, 'use_post_enc_proj': False, 'decoder_embed_dim': 768, 'decoder_layers': 1, 'decoder_layerdrop': 0.0, 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'encoder_layerdrop': 0.05, 'dropout_input': 0.1, 'random_mask_prob': 0.85, 'mask_length': 10, 'mask_selection': static, 'mask_other': 0.0, 'no_mask_overlap': False, 'mask_min_space': 0, 'conv_pos': 128, 'conv_pos_groups': 16, 'checkpoint_activations': False, 'max_token_length': 48000, 'enc_sine_pos': True, 'enc_conv_pos': False, 'dec_sine_pos': True, 'dec_conv_pos': False}
+[2025-07-10 22:31:09,915][fairseq_cli.train][INFO] - MAE_AST(
+  (feature_extractor): Identity()
+  (post_extract_proj): Linear(in_features=256, out_features=768, bias=True)
+  (layer_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+  (batch_norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+  (unfold): Unfold(kernel_size=(16, 16), dilation=1, padding=0, stride=(16, 16))
+  (dropout_input): Dropout(p=0.1, inplace=False)
+  (enc_sine_pos_embed): SinusoidalPositionalEncoding()
+  (encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0-3): 4 x TransformerSentenceEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.0, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (dec_sine_pos_embed): SinusoidalPositionalEncoding()
+  (decoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerSentenceEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.0, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (final_proj_reconstruction): Linear(in_features=768, out_features=256, bias=True)
+  (final_proj_classification): Linear(in_features=768, out_features=256, bias=True)
+)
+[2025-07-10 22:31:09,916][fairseq_cli.train][INFO] - task: MAE_AST_Pretraining_Task
+[2025-07-10 22:31:09,916][fairseq_cli.train][INFO] - model: MAE_AST
+[2025-07-10 22:31:09,916][fairseq_cli.train][INFO] - criterion: MAE_AST_Criterion
+[2025-07-10 22:31:09,916][fairseq_cli.train][INFO] - num. shared model params: 36,035,328 (num. trained: 36,035,328)
+[2025-07-10 22:31:09,916][fairseq_cli.train][INFO] - num. expert model params: 0 (num. trained: 0)
+[2025-07-10 22:31:09,918][mae_ast.data.mae_ast_dataset][INFO] - max_keep=None, min_keep=5000, loaded 53, skipped 0 short and 0 long, longest-loaded=20000, shortest-loaded=20000
+[2025-07-10 22:31:09,918][mae_ast.data.mae_ast_dataset][INFO] - pad_audio=False, random_crop=True, normalize=False, max_sample_size=40000
+[2025-07-10 22:31:10,016][fairseq.trainer][INFO] - detected shared parameter: batch_norm.weight <- batch_norm.bias
+[2025-07-10 22:31:10,016][fairseq.utils][INFO] - ***********************CUDA enviroments for all 1 workers***********************
+[2025-07-10 22:31:10,016][fairseq.utils][INFO] - rank   0: capabilities =  8.9  ; total memory = 15.687 GB ; name = NVIDIA GeForce RTX 4080 SUPER           
+[2025-07-10 22:31:10,016][fairseq.utils][INFO] - ***********************CUDA enviroments for all 1 workers***********************
+[2025-07-10 22:31:10,016][fairseq_cli.train][INFO] - training on 1 devices (GPUs/TPUs)
+[2025-07-10 22:31:10,016][fairseq_cli.train][INFO] - max tokens per device = 1048576 and max sentences per device = None
+[2025-07-10 22:31:10,017][fairseq.trainer][INFO] - Preparing to load checkpoint checkpoints/checkpoint_last.pt
+[2025-07-10 22:31:10,017][fairseq.trainer][INFO] - No existing checkpoint found checkpoints/checkpoint_last.pt
+[2025-07-10 22:31:10,017][fairseq.trainer][INFO] - loading train data for epoch 1
+[2025-07-10 22:31:10,017][mae_ast.data.mae_ast_dataset][INFO] - max_keep=None, min_keep=5000, loaded 989, skipped 0 short and 0 long, longest-loaded=20000, shortest-loaded=20000
+[2025-07-10 22:31:10,017][mae_ast.data.mae_ast_dataset][INFO] - pad_audio=False, random_crop=True, normalize=False, max_sample_size=40000
+[2025-07-10 22:31:10,419][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:10,421][fairseq.trainer][INFO] - begin training epoch 1
+[2025-07-10 22:31:10,421][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:13,358][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 1 @ 3 updates
+[2025-07-10 22:31:13,358][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint1.pt
+[2025-07-10 22:31:13,749][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint1.pt
+[2025-07-10 22:31:13,896][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint1.pt (epoch 1 @ 3 updates, score None) (writing took 0.5378041980002308 seconds)
+[2025-07-10 22:31:13,896][fairseq_cli.train][INFO] - end of epoch 1 (average epoch stats below)
+[2025-07-10 22:31:13,898][train][INFO] - {"epoch": 1, "train_loss": "26.801", "train_nll_loss": "0.064", "train_loss_recon": "0.869", "train_loss_info_nce": "18.109", "train_ppl": "1.05", "train_wps": "3615.2", "train_ups": "1.22", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "3", "train_lr": "7.5e-08", "train_gnorm": "66.656", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "4"}
+[2025-07-10 22:31:13,931][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:13,933][fairseq.trainer][INFO] - begin training epoch 2
+[2025-07-10 22:31:13,933][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:16,237][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 2 @ 6 updates
+[2025-07-10 22:31:16,237][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint2.pt
+[2025-07-10 22:31:16,622][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint2.pt
+[2025-07-10 22:31:16,956][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint2.pt (epoch 2 @ 6 updates, score None) (writing took 0.7193278690001534 seconds)
+[2025-07-10 22:31:16,956][fairseq_cli.train][INFO] - end of epoch 2 (average epoch stats below)
+[2025-07-10 22:31:16,957][train][INFO] - {"epoch": 2, "train_loss": "26.819", "train_nll_loss": "0.064", "train_loss_recon": "0.869", "train_loss_info_nce": "18.123", "train_ppl": "1.05", "train_wps": "3035.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "6", "train_lr": "1.5e-07", "train_gnorm": "66.657", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "7"}
+[2025-07-10 22:31:16,988][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:16,990][fairseq.trainer][INFO] - begin training epoch 3
+[2025-07-10 22:31:16,990][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:19,287][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 3 @ 9 updates
+[2025-07-10 22:31:19,288][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint3.pt
+[2025-07-10 22:31:19,681][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint3.pt
+[2025-07-10 22:31:20,005][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint3.pt (epoch 3 @ 9 updates, score None) (writing took 0.717953459000455 seconds)
+[2025-07-10 22:31:20,006][fairseq_cli.train][INFO] - end of epoch 3 (average epoch stats below)
+[2025-07-10 22:31:20,007][train][INFO] - {"epoch": 3, "train_loss": "26.804", "train_nll_loss": "0.064", "train_loss_recon": "0.868", "train_loss_info_nce": "18.124", "train_ppl": "1.05", "train_wps": "3045.7", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "9", "train_lr": "2.25e-07", "train_gnorm": "66.209", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "10"}
+[2025-07-10 22:31:20,038][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:20,040][fairseq.trainer][INFO] - begin training epoch 4
+[2025-07-10 22:31:20,040][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:22,387][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 4 @ 12 updates
+[2025-07-10 22:31:22,387][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint4.pt
+[2025-07-10 22:31:22,756][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint4.pt
+[2025-07-10 22:31:23,078][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint4.pt (epoch 4 @ 12 updates, score None) (writing took 0.6911031449999427 seconds)
+[2025-07-10 22:31:23,078][fairseq_cli.train][INFO] - end of epoch 4 (average epoch stats below)
+[2025-07-10 22:31:23,079][train][INFO] - {"epoch": 4, "train_loss": "26.804", "train_nll_loss": "0.064", "train_loss_recon": "0.868", "train_loss_info_nce": "18.128", "train_ppl": "1.05", "train_wps": "3022.7", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "12", "train_lr": "3e-07", "train_gnorm": "66.657", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "13"}
+[2025-07-10 22:31:23,112][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:23,113][fairseq.trainer][INFO] - begin training epoch 5
+[2025-07-10 22:31:23,114][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:25,454][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:31:25,759][valid][INFO] - {"epoch": 5, "valid_loss": "26.099", "valid_nll_loss": "0.062", "valid_loss_recon": "0.844", "valid_loss_info_nce": "17.655", "valid_ppl": "1.04", "valid_wps": "91853.4", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "15"}
+[2025-07-10 22:31:25,760][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 5 @ 15 updates
+[2025-07-10 22:31:25,760][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint5.pt
+[2025-07-10 22:31:26,160][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint5.pt
+[2025-07-10 22:31:26,582][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint5.pt (epoch 5 @ 15 updates, score 26.099) (writing took 0.8226101090003795 seconds)
+[2025-07-10 22:31:26,583][fairseq_cli.train][INFO] - end of epoch 5 (average epoch stats below)
+[2025-07-10 22:31:26,584][train][INFO] - {"epoch": 5, "train_loss": "26.739", "train_nll_loss": "0.063", "train_loss_recon": "0.868", "train_loss_info_nce": "18.046", "train_ppl": "1.04", "train_wps": "2650.1", "train_ups": "0.86", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "15", "train_lr": "3.75e-07", "train_gnorm": "64.913", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "17"}
+[2025-07-10 22:31:26,624][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:26,626][fairseq.trainer][INFO] - begin training epoch 6
+[2025-07-10 22:31:26,627][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:28,958][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 6 @ 18 updates
+[2025-07-10 22:31:28,959][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint6.pt
+[2025-07-10 22:31:29,350][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint6.pt
+[2025-07-10 22:31:29,689][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint6.pt (epoch 6 @ 18 updates, score None) (writing took 0.7312800539993987 seconds)
+[2025-07-10 22:31:29,690][fairseq_cli.train][INFO] - end of epoch 6 (average epoch stats below)
+[2025-07-10 22:31:29,691][train][INFO] - {"epoch": 6, "train_loss": "26.718", "train_nll_loss": "0.063", "train_loss_recon": "0.869", "train_loss_info_nce": "18.029", "train_ppl": "1.04", "train_wps": "2989.1", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "18", "train_lr": "4.5e-07", "train_gnorm": "64.118", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "20"}
+[2025-07-10 22:31:29,722][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:29,724][fairseq.trainer][INFO] - begin training epoch 7
+[2025-07-10 22:31:29,724][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:31,995][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 7 @ 21 updates
+[2025-07-10 22:31:31,996][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint7.pt
+[2025-07-10 22:31:32,379][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint7.pt
+[2025-07-10 22:31:32,681][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint7.pt (epoch 7 @ 21 updates, score None) (writing took 0.6853259270001217 seconds)
+[2025-07-10 22:31:32,681][fairseq_cli.train][INFO] - end of epoch 7 (average epoch stats below)
+[2025-07-10 22:31:32,682][train][INFO] - {"epoch": 7, "train_loss": "26.534", "train_nll_loss": "0.063", "train_loss_recon": "0.867", "train_loss_info_nce": "17.865", "train_ppl": "1.04", "train_wps": "3104.8", "train_ups": "1", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "21", "train_lr": "5.25e-07", "train_gnorm": "59.23", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "23"}
+[2025-07-10 22:31:32,715][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:32,716][fairseq.trainer][INFO] - begin training epoch 8
+[2025-07-10 22:31:32,717][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:35,027][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 8 @ 24 updates
+[2025-07-10 22:31:35,027][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint8.pt
+[2025-07-10 22:31:35,407][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint8.pt
+[2025-07-10 22:31:35,843][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint8.pt (epoch 8 @ 24 updates, score None) (writing took 0.8160021850007979 seconds)
+[2025-07-10 22:31:35,843][fairseq_cli.train][INFO] - end of epoch 8 (average epoch stats below)
+[2025-07-10 22:31:35,844][train][INFO] - {"epoch": 8, "train_loss": "26.447", "train_nll_loss": "0.063", "train_loss_recon": "0.866", "train_loss_info_nce": "17.773", "train_ppl": "1.04", "train_wps": "2937", "train_ups": "0.95", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "24", "train_lr": "6e-07", "train_gnorm": "56.658", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "26"}
+[2025-07-10 22:31:35,882][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:35,884][fairseq.trainer][INFO] - begin training epoch 9
+[2025-07-10 22:31:35,885][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:38,214][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 9 @ 27 updates
+[2025-07-10 22:31:38,214][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint9.pt
+[2025-07-10 22:31:38,581][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint9.pt
+[2025-07-10 22:31:38,886][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint9.pt (epoch 9 @ 27 updates, score None) (writing took 0.672093486000449 seconds)
+[2025-07-10 22:31:38,886][fairseq_cli.train][INFO] - end of epoch 9 (average epoch stats below)
+[2025-07-10 22:31:38,887][train][INFO] - {"epoch": 9, "train_loss": "26.271", "train_nll_loss": "0.062", "train_loss_recon": "0.865", "train_loss_info_nce": "17.596", "train_ppl": "1.04", "train_wps": "3051.7", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "27", "train_lr": "6.75e-07", "train_gnorm": "52.958", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "29"}
+[2025-07-10 22:31:38,922][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:38,924][fairseq.trainer][INFO] - begin training epoch 10
+[2025-07-10 22:31:38,924][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:41,216][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:31:41,439][valid][INFO] - {"epoch": 10, "valid_loss": "25.291", "valid_nll_loss": "0.06", "valid_loss_recon": "0.842", "valid_loss_info_nce": "16.874", "valid_ppl": "1.04", "valid_wps": "91477", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "30", "valid_best_loss": "25.291"}
+[2025-07-10 22:31:41,440][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 10 @ 30 updates
+[2025-07-10 22:31:41,440][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint10.pt
+[2025-07-10 22:31:41,816][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint10.pt
+[2025-07-10 22:31:42,414][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint10.pt (epoch 10 @ 30 updates, score 25.291) (writing took 0.9747599579995949 seconds)
+[2025-07-10 22:31:42,415][fairseq_cli.train][INFO] - end of epoch 10 (average epoch stats below)
+[2025-07-10 22:31:42,416][train][INFO] - {"epoch": 10, "train_loss": "25.919", "train_nll_loss": "0.061", "train_loss_recon": "0.862", "train_loss_info_nce": "17.308", "train_ppl": "1.04", "train_wps": "2631.9", "train_ups": "0.85", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "30", "train_lr": "7.5e-07", "train_gnorm": "45.38", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "32"}
+[2025-07-10 22:31:42,455][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:42,456][fairseq.trainer][INFO] - begin training epoch 11
+[2025-07-10 22:31:42,457][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:44,770][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 11 @ 33 updates
+[2025-07-10 22:31:44,770][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint11.pt
+[2025-07-10 22:31:45,155][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint11.pt
+[2025-07-10 22:31:45,501][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint11.pt (epoch 11 @ 33 updates, score None) (writing took 0.731177908999598 seconds)
+[2025-07-10 22:31:45,501][fairseq_cli.train][INFO] - end of epoch 11 (average epoch stats below)
+[2025-07-10 22:31:45,502][train][INFO] - {"epoch": 11, "train_loss": "25.821", "train_nll_loss": "0.061", "train_loss_recon": "0.861", "train_loss_info_nce": "17.203", "train_ppl": "1.04", "train_wps": "3009.2", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "33", "train_lr": "8.25e-07", "train_gnorm": "43.819", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "35"}
+[2025-07-10 22:31:45,535][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:45,537][fairseq.trainer][INFO] - begin training epoch 12
+[2025-07-10 22:31:45,537][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:47,856][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 12 @ 36 updates
+[2025-07-10 22:31:47,857][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint12.pt
+[2025-07-10 22:31:48,239][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint12.pt
+[2025-07-10 22:31:48,591][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint12.pt (epoch 12 @ 36 updates, score None) (writing took 0.7352181579999524 seconds)
+[2025-07-10 22:31:48,592][fairseq_cli.train][INFO] - end of epoch 12 (average epoch stats below)
+[2025-07-10 22:31:48,593][train][INFO] - {"epoch": 12, "train_loss": "25.647", "train_nll_loss": "0.061", "train_loss_recon": "0.859", "train_loss_info_nce": "17.046", "train_ppl": "1.04", "train_wps": "3004.9", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "36", "train_lr": "9e-07", "train_gnorm": "41.935", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "39"}
+[2025-07-10 22:31:48,626][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:48,627][fairseq.trainer][INFO] - begin training epoch 13
+[2025-07-10 22:31:48,627][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:50,955][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 13 @ 39 updates
+[2025-07-10 22:31:50,955][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint13.pt
+[2025-07-10 22:31:51,330][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint13.pt
+[2025-07-10 22:31:51,646][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint13.pt (epoch 13 @ 39 updates, score None) (writing took 0.6910866019998139 seconds)
+[2025-07-10 22:31:51,646][fairseq_cli.train][INFO] - end of epoch 13 (average epoch stats below)
+[2025-07-10 22:31:51,647][train][INFO] - {"epoch": 13, "train_loss": "25.397", "train_nll_loss": "0.06", "train_loss_recon": "0.856", "train_loss_info_nce": "16.836", "train_ppl": "1.04", "train_wps": "3040.6", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "39", "train_lr": "9.75e-07", "train_gnorm": "39.791", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "42"}
+[2025-07-10 22:31:51,680][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:51,682][fairseq.trainer][INFO] - begin training epoch 14
+[2025-07-10 22:31:51,682][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:53,983][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 14 @ 42 updates
+[2025-07-10 22:31:53,984][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint14.pt
+[2025-07-10 22:31:54,367][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint14.pt
+[2025-07-10 22:31:54,697][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint14.pt (epoch 14 @ 42 updates, score None) (writing took 0.7133035340002607 seconds)
+[2025-07-10 22:31:54,697][fairseq_cli.train][INFO] - end of epoch 14 (average epoch stats below)
+[2025-07-10 22:31:54,698][train][INFO] - {"epoch": 14, "train_loss": "25.254", "train_nll_loss": "0.06", "train_loss_recon": "0.855", "train_loss_info_nce": "16.707", "train_ppl": "1.04", "train_wps": "3044.3", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "42", "train_lr": "1.05e-06", "train_gnorm": "38.524", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "45"}
+[2025-07-10 22:31:54,732][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:54,734][fairseq.trainer][INFO] - begin training epoch 15
+[2025-07-10 22:31:54,734][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:31:57,087][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:31:57,301][valid][INFO] - {"epoch": 15, "valid_loss": "24.065", "valid_nll_loss": "0.057", "valid_loss_recon": "0.825", "valid_loss_info_nce": "15.816", "valid_ppl": "1.04", "valid_wps": "94327.1", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "45", "valid_best_loss": "24.065"}
+[2025-07-10 22:31:57,302][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 15 @ 45 updates
+[2025-07-10 22:31:57,302][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint15.pt
+[2025-07-10 22:31:57,680][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint15.pt
+[2025-07-10 22:31:58,301][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint15.pt (epoch 15 @ 45 updates, score 24.065) (writing took 0.9992159620005623 seconds)
+[2025-07-10 22:31:58,301][fairseq_cli.train][INFO] - end of epoch 15 (average epoch stats below)
+[2025-07-10 22:31:58,302][train][INFO] - {"epoch": 15, "train_loss": "24.949", "train_nll_loss": "0.059", "train_loss_recon": "0.85", "train_loss_info_nce": "16.442", "train_ppl": "1.04", "train_wps": "2576.7", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "45", "train_lr": "1.125e-06", "train_gnorm": "36.146", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "48"}
+[2025-07-10 22:31:58,339][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:31:58,341][fairseq.trainer][INFO] - begin training epoch 16
+[2025-07-10 22:31:58,341][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:00,686][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 16 @ 48 updates
+[2025-07-10 22:32:00,686][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint16.pt
+[2025-07-10 22:32:01,064][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint16.pt
+[2025-07-10 22:32:01,387][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint16.pt (epoch 16 @ 48 updates, score None) (writing took 0.7009583359995304 seconds)
+[2025-07-10 22:32:01,387][fairseq_cli.train][INFO] - end of epoch 16 (average epoch stats below)
+[2025-07-10 22:32:01,388][train][INFO] - {"epoch": 16, "train_loss": "24.73", "train_nll_loss": "0.059", "train_loss_recon": "0.848", "train_loss_info_nce": "16.254", "train_ppl": "1.04", "train_wps": "3009.6", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "48", "train_lr": "1.2e-06", "train_gnorm": "34.619", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "51"}
+[2025-07-10 22:32:01,424][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:01,426][fairseq.trainer][INFO] - begin training epoch 17
+[2025-07-10 22:32:01,426][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:03,736][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 17 @ 51 updates
+[2025-07-10 22:32:03,736][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint17.pt
+[2025-07-10 22:32:04,112][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint17.pt
+[2025-07-10 22:32:04,441][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint17.pt (epoch 17 @ 51 updates, score None) (writing took 0.7055981020002946 seconds)
+[2025-07-10 22:32:04,442][fairseq_cli.train][INFO] - end of epoch 17 (average epoch stats below)
+[2025-07-10 22:32:04,443][train][INFO] - {"epoch": 17, "train_loss": "24.626", "train_nll_loss": "0.058", "train_loss_recon": "0.847", "train_loss_info_nce": "16.157", "train_ppl": "1.04", "train_wps": "3040.5", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "51", "train_lr": "1.275e-06", "train_gnorm": "33.777", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "54"}
+[2025-07-10 22:32:04,481][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:04,483][fairseq.trainer][INFO] - begin training epoch 18
+[2025-07-10 22:32:04,483][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:06,782][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 18 @ 54 updates
+[2025-07-10 22:32:06,782][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint18.pt
+[2025-07-10 22:32:07,155][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint18.pt
+[2025-07-10 22:32:07,469][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint18.pt (epoch 18 @ 54 updates, score None) (writing took 0.6874307250000129 seconds)
+[2025-07-10 22:32:07,469][fairseq_cli.train][INFO] - end of epoch 18 (average epoch stats below)
+[2025-07-10 22:32:07,470][train][INFO] - {"epoch": 18, "train_loss": "24.431", "train_nll_loss": "0.058", "train_loss_recon": "0.844", "train_loss_info_nce": "15.984", "train_ppl": "1.04", "train_wps": "3067.5", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "54", "train_lr": "1.35e-06", "train_gnorm": "32.304", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "57"}
+[2025-07-10 22:32:07,507][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:07,509][fairseq.trainer][INFO] - begin training epoch 19
+[2025-07-10 22:32:07,509][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:09,825][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 19 @ 57 updates
+[2025-07-10 22:32:09,825][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint19.pt
+[2025-07-10 22:32:10,207][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint19.pt
+[2025-07-10 22:32:10,532][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint19.pt (epoch 19 @ 57 updates, score None) (writing took 0.7070089290000396 seconds)
+[2025-07-10 22:32:10,532][fairseq_cli.train][INFO] - end of epoch 19 (average epoch stats below)
+[2025-07-10 22:32:10,533][train][INFO] - {"epoch": 19, "train_loss": "24.204", "train_nll_loss": "0.057", "train_loss_recon": "0.839", "train_loss_info_nce": "15.798", "train_ppl": "1.04", "train_wps": "3032.4", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "57", "train_lr": "1.425e-06", "train_gnorm": "31.088", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "61"}
+[2025-07-10 22:32:10,568][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:10,570][fairseq.trainer][INFO] - begin training epoch 20
+[2025-07-10 22:32:10,570][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:12,885][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:32:13,103][valid][INFO] - {"epoch": 20, "valid_loss": "22.786", "valid_nll_loss": "0.054", "valid_loss_recon": "0.805", "valid_loss_info_nce": "14.736", "valid_ppl": "1.04", "valid_wps": "86134.2", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "60", "valid_best_loss": "22.786"}
+[2025-07-10 22:32:13,104][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 20 @ 60 updates
+[2025-07-10 22:32:13,104][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint20.pt
+[2025-07-10 22:32:13,481][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint20.pt
+[2025-07-10 22:32:14,118][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint20.pt (epoch 20 @ 60 updates, score 22.786) (writing took 1.0139859050004816 seconds)
+[2025-07-10 22:32:14,118][fairseq_cli.train][INFO] - end of epoch 20 (average epoch stats below)
+[2025-07-10 22:32:14,120][train][INFO] - {"epoch": 20, "train_loss": "23.951", "train_nll_loss": "0.057", "train_loss_recon": "0.836", "train_loss_info_nce": "15.58", "train_ppl": "1.04", "train_wps": "2589.7", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "60", "train_lr": "1.5e-06", "train_gnorm": "29.496", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "64"}
+[2025-07-10 22:32:14,153][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:14,155][fairseq.trainer][INFO] - begin training epoch 21
+[2025-07-10 22:32:14,155][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:16,505][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 21 @ 63 updates
+[2025-07-10 22:32:16,505][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint21.pt
+[2025-07-10 22:32:16,877][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint21.pt
+[2025-07-10 22:32:17,286][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint21.pt (epoch 21 @ 63 updates, score None) (writing took 0.7812111000002915 seconds)
+[2025-07-10 22:32:17,286][fairseq_cli.train][INFO] - end of epoch 21 (average epoch stats below)
+[2025-07-10 22:32:17,287][train][INFO] - {"epoch": 21, "train_loss": "23.706", "train_nll_loss": "0.056", "train_loss_recon": "0.832", "train_loss_info_nce": "15.373", "train_ppl": "1.04", "train_wps": "2931.6", "train_ups": "0.95", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "63", "train_lr": "1.575e-06", "train_gnorm": "27.84", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "67"}
+[2025-07-10 22:32:17,325][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:17,328][fairseq.trainer][INFO] - begin training epoch 22
+[2025-07-10 22:32:17,328][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:19,698][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 22 @ 66 updates
+[2025-07-10 22:32:19,698][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint22.pt
+[2025-07-10 22:32:20,073][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint22.pt
+[2025-07-10 22:32:20,391][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint22.pt (epoch 22 @ 66 updates, score None) (writing took 0.6934655120003299 seconds)
+[2025-07-10 22:32:20,391][fairseq_cli.train][INFO] - end of epoch 22 (average epoch stats below)
+[2025-07-10 22:32:20,392][train][INFO] - {"epoch": 22, "train_loss": "23.444", "train_nll_loss": "0.056", "train_loss_recon": "0.826", "train_loss_info_nce": "15.174", "train_ppl": "1.04", "train_wps": "2991.1", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "66", "train_lr": "1.65e-06", "train_gnorm": "26.171", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "70"}
+[2025-07-10 22:32:20,429][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:20,430][fairseq.trainer][INFO] - begin training epoch 23
+[2025-07-10 22:32:20,431][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:22,749][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 23 @ 69 updates
+[2025-07-10 22:32:22,749][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint23.pt
+[2025-07-10 22:32:23,136][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint23.pt
+[2025-07-10 22:32:23,466][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint23.pt (epoch 23 @ 69 updates, score None) (writing took 0.7171521909995136 seconds)
+[2025-07-10 22:32:23,466][fairseq_cli.train][INFO] - end of epoch 23 (average epoch stats below)
+[2025-07-10 22:32:23,467][train][INFO] - {"epoch": 23, "train_loss": "23.26", "train_nll_loss": "0.055", "train_loss_recon": "0.823", "train_loss_info_nce": "15.028", "train_ppl": "1.04", "train_wps": "3020.2", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "69", "train_lr": "1.725e-06", "train_gnorm": "24.77", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "73"}
+[2025-07-10 22:32:23,507][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:23,510][fairseq.trainer][INFO] - begin training epoch 24
+[2025-07-10 22:32:23,510][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:25,816][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 24 @ 72 updates
+[2025-07-10 22:32:25,816][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint24.pt
+[2025-07-10 22:32:26,188][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint24.pt
+[2025-07-10 22:32:26,515][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint24.pt (epoch 24 @ 72 updates, score None) (writing took 0.6987314939997304 seconds)
+[2025-07-10 22:32:26,515][fairseq_cli.train][INFO] - end of epoch 24 (average epoch stats below)
+[2025-07-10 22:32:26,516][train][INFO] - {"epoch": 24, "train_loss": "23.046", "train_nll_loss": "0.055", "train_loss_recon": "0.818", "train_loss_info_nce": "14.847", "train_ppl": "1.04", "train_wps": "3046.4", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "72", "train_lr": "1.8e-06", "train_gnorm": "23.754", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "76"}
+[2025-07-10 22:32:26,554][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:26,555][fairseq.trainer][INFO] - begin training epoch 25
+[2025-07-10 22:32:26,555][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:28,890][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:32:29,107][valid][INFO] - {"epoch": 25, "valid_loss": "21.606", "valid_nll_loss": "0.051", "valid_loss_recon": "0.779", "valid_loss_info_nce": "13.819", "valid_ppl": "1.04", "valid_wps": "93849", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "75", "valid_best_loss": "21.606"}
+[2025-07-10 22:32:29,108][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 25 @ 75 updates
+[2025-07-10 22:32:29,108][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint25.pt
+[2025-07-10 22:32:29,485][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint25.pt
+[2025-07-10 22:32:30,130][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint25.pt (epoch 25 @ 75 updates, score 21.606) (writing took 1.0227157210001678 seconds)
+[2025-07-10 22:32:30,131][fairseq_cli.train][INFO] - end of epoch 25 (average epoch stats below)
+[2025-07-10 22:32:30,132][train][INFO] - {"epoch": 25, "train_loss": "22.81", "train_nll_loss": "0.054", "train_loss_recon": "0.813", "train_loss_info_nce": "14.672", "train_ppl": "1.04", "train_wps": "2568.4", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "75", "train_lr": "1.875e-06", "train_gnorm": "22.581", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "80"}
+[2025-07-10 22:32:30,169][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:30,170][fairseq.trainer][INFO] - begin training epoch 26
+[2025-07-10 22:32:30,170][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:32,509][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 26 @ 78 updates
+[2025-07-10 22:32:32,509][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint26.pt
+[2025-07-10 22:32:32,881][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint26.pt
+[2025-07-10 22:32:33,205][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint26.pt (epoch 26 @ 78 updates, score None) (writing took 0.6961617300003127 seconds)
+[2025-07-10 22:32:33,205][fairseq_cli.train][INFO] - end of epoch 26 (average epoch stats below)
+[2025-07-10 22:32:33,206][train][INFO] - {"epoch": 26, "train_loss": "22.57", "train_nll_loss": "0.053", "train_loss_recon": "0.807", "train_loss_info_nce": "14.488", "train_ppl": "1.04", "train_wps": "3020.7", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "78", "train_lr": "1.95e-06", "train_gnorm": "21.419", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "83"}
+[2025-07-10 22:32:33,240][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:33,242][fairseq.trainer][INFO] - begin training epoch 27
+[2025-07-10 22:32:33,242][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:35,566][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 27 @ 81 updates
+[2025-07-10 22:32:35,566][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint27.pt
+[2025-07-10 22:32:35,938][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint27.pt
+[2025-07-10 22:32:36,262][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint27.pt (epoch 27 @ 81 updates, score None) (writing took 0.6968541530004586 seconds)
+[2025-07-10 22:32:36,263][fairseq_cli.train][INFO] - end of epoch 27 (average epoch stats below)
+[2025-07-10 22:32:36,264][train][INFO] - {"epoch": 27, "train_loss": "22.349", "train_nll_loss": "0.053", "train_loss_recon": "0.802", "train_loss_info_nce": "14.328", "train_ppl": "1.04", "train_wps": "3037.2", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "81", "train_lr": "2.025e-06", "train_gnorm": "20.42", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "86"}
+[2025-07-10 22:32:36,298][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:36,299][fairseq.trainer][INFO] - begin training epoch 28
+[2025-07-10 22:32:36,300][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:38,602][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 28 @ 84 updates
+[2025-07-10 22:32:38,602][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint28.pt
+[2025-07-10 22:32:38,974][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint28.pt
+[2025-07-10 22:32:39,294][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint28.pt (epoch 28 @ 84 updates, score None) (writing took 0.6925286239993511 seconds)
+[2025-07-10 22:32:39,295][fairseq_cli.train][INFO] - end of epoch 28 (average epoch stats below)
+[2025-07-10 22:32:39,296][train][INFO] - {"epoch": 28, "train_loss": "22.134", "train_nll_loss": "0.052", "train_loss_recon": "0.796", "train_loss_info_nce": "14.165", "train_ppl": "1.04", "train_wps": "3063", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "84", "train_lr": "2.1e-06", "train_gnorm": "19.459", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "89"}
+[2025-07-10 22:32:39,331][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:39,332][fairseq.trainer][INFO] - begin training epoch 29
+[2025-07-10 22:32:39,332][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:41,706][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 29 @ 87 updates
+[2025-07-10 22:32:41,706][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint29.pt
+[2025-07-10 22:32:42,077][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint29.pt
+[2025-07-10 22:32:42,408][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint29.pt (epoch 29 @ 87 updates, score None) (writing took 0.7026467329997104 seconds)
+[2025-07-10 22:32:42,409][fairseq_cli.train][INFO] - end of epoch 29 (average epoch stats below)
+[2025-07-10 22:32:42,410][train][INFO] - {"epoch": 29, "train_loss": "21.901", "train_nll_loss": "0.052", "train_loss_recon": "0.789", "train_loss_info_nce": "14.007", "train_ppl": "1.04", "train_wps": "2982.6", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "87", "train_lr": "2.175e-06", "train_gnorm": "18.496", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "92"}
+[2025-07-10 22:32:42,442][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:42,444][fairseq.trainer][INFO] - begin training epoch 30
+[2025-07-10 22:32:42,444][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:44,756][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:32:44,973][valid][INFO] - {"epoch": 30, "valid_loss": "20.448", "valid_nll_loss": "0.048", "valid_loss_recon": "0.745", "valid_loss_info_nce": "13.003", "valid_ppl": "1.03", "valid_wps": "93647.2", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "90", "valid_best_loss": "20.448"}
+[2025-07-10 22:32:44,973][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 30 @ 90 updates
+[2025-07-10 22:32:44,974][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint30.pt
+[2025-07-10 22:32:45,344][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint30.pt
+[2025-07-10 22:32:45,961][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint30.pt (epoch 30 @ 90 updates, score 20.448) (writing took 0.9874674500006222 seconds)
+[2025-07-10 22:32:45,961][fairseq_cli.train][INFO] - end of epoch 30 (average epoch stats below)
+[2025-07-10 22:32:45,962][train][INFO] - {"epoch": 30, "train_loss": "21.654", "train_nll_loss": "0.051", "train_loss_recon": "0.782", "train_loss_info_nce": "13.823", "train_ppl": "1.04", "train_wps": "2614", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "90", "train_lr": "2.25e-06", "train_gnorm": "17.536", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "96"}
+[2025-07-10 22:32:45,998][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:45,999][fairseq.trainer][INFO] - begin training epoch 31
+[2025-07-10 22:32:45,999][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:48,311][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 31 @ 93 updates
+[2025-07-10 22:32:48,312][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint31.pt
+[2025-07-10 22:32:48,687][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint31.pt
+[2025-07-10 22:32:49,012][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint31.pt (epoch 31 @ 93 updates, score None) (writing took 0.7008916920003685 seconds)
+[2025-07-10 22:32:49,013][fairseq_cli.train][INFO] - end of epoch 31 (average epoch stats below)
+[2025-07-10 22:32:49,014][train][INFO] - {"epoch": 31, "train_loss": "21.454", "train_nll_loss": "0.051", "train_loss_recon": "0.776", "train_loss_info_nce": "13.689", "train_ppl": "1.04", "train_wps": "3043.5", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "93", "train_lr": "2.325e-06", "train_gnorm": "16.793", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "99"}
+[2025-07-10 22:32:49,047][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:49,049][fairseq.trainer][INFO] - begin training epoch 32
+[2025-07-10 22:32:49,049][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:51,370][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 32 @ 96 updates
+[2025-07-10 22:32:51,370][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint32.pt
+[2025-07-10 22:32:51,739][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint32.pt
+[2025-07-10 22:32:52,054][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint32.pt (epoch 32 @ 96 updates, score None) (writing took 0.6841514620000453 seconds)
+[2025-07-10 22:32:52,054][fairseq_cli.train][INFO] - end of epoch 32 (average epoch stats below)
+[2025-07-10 22:32:52,055][train][INFO] - {"epoch": 32, "train_loss": "21.234", "train_nll_loss": "0.05", "train_loss_recon": "0.769", "train_loss_info_nce": "13.542", "train_ppl": "1.04", "train_wps": "3053.5", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "96", "train_lr": "2.4e-06", "train_gnorm": "16.05", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "102"}
+[2025-07-10 22:32:52,091][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:52,093][fairseq.trainer][INFO] - begin training epoch 33
+[2025-07-10 22:32:52,093][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:54,402][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 33 @ 99 updates
+[2025-07-10 22:32:54,403][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint33.pt
+[2025-07-10 22:32:54,776][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint33.pt
+[2025-07-10 22:32:55,086][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint33.pt (epoch 33 @ 99 updates, score None) (writing took 0.6843212760004462 seconds)
+[2025-07-10 22:32:55,087][fairseq_cli.train][INFO] - end of epoch 33 (average epoch stats below)
+[2025-07-10 22:32:55,088][train][INFO] - {"epoch": 33, "train_loss": "21.019", "train_nll_loss": "0.05", "train_loss_recon": "0.761", "train_loss_info_nce": "13.4", "train_ppl": "1.04", "train_wps": "3062.3", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "99", "train_lr": "2.475e-06", "train_gnorm": "15.346", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "105"}
+[2025-07-10 22:32:55,121][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:55,122][fairseq.trainer][INFO] - begin training epoch 34
+[2025-07-10 22:32:55,123][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:32:56,413][train_inner][INFO] - {"epoch": 34, "update": 33.333, "loss": "24.369", "nll_loss": "0.058", "loss_recon": "0.834", "loss_info_nce": "16.022", "ppl": "1.04", "wps": "2941.7", "ups": "0.95", "wpb": "3097.5", "bsz": "330.2", "num_updates": "100", "lr": "2.5e-06", "gnorm": "37.397", "clip": "100", "loss_scale": "128", "train_wall": "58", "gb_free": "12.3", "wall": "106"}
+[2025-07-10 22:32:56,413][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:32:56,634][valid][INFO] - {"epoch": 34, "valid_loss": "19.601", "valid_nll_loss": "0.046", "valid_loss_recon": "0.717", "valid_loss_info_nce": "12.433", "valid_ppl": "1.03", "valid_wps": "92742.4", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "100", "valid_best_loss": "19.601"}
+[2025-07-10 22:32:56,635][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 34 @ 100 updates
+[2025-07-10 22:32:56,635][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint_34_100.pt
+[2025-07-10 22:32:57,017][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint_34_100.pt
+[2025-07-10 22:32:57,630][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_34_100.pt (epoch 34 @ 100 updates, score 19.601) (writing took 0.9951809639997009 seconds)
+[2025-07-10 22:32:58,654][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 34 @ 102 updates
+[2025-07-10 22:32:58,655][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint34.pt
+[2025-07-10 22:32:59,029][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint34.pt
+[2025-07-10 22:32:59,322][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint34.pt (epoch 34 @ 102 updates, score None) (writing took 0.6673895349995291 seconds)
+[2025-07-10 22:32:59,322][fairseq_cli.train][INFO] - end of epoch 34 (average epoch stats below)
+[2025-07-10 22:32:59,323][train][INFO] - {"epoch": 34, "train_loss": "20.794", "train_nll_loss": "0.049", "train_loss_recon": "0.753", "train_loss_info_nce": "13.26", "train_ppl": "1.03", "train_wps": "2192.5", "train_ups": "0.71", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "102", "train_lr": "2.55e-06", "train_gnorm": "14.664", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "109"}
+[2025-07-10 22:32:59,358][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:32:59,360][fairseq.trainer][INFO] - begin training epoch 35
+[2025-07-10 22:32:59,360][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:01,708][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:33:01,923][valid][INFO] - {"epoch": 35, "valid_loss": "19.196", "valid_nll_loss": "0.045", "valid_loss_recon": "0.701", "valid_loss_info_nce": "12.183", "valid_ppl": "1.03", "valid_wps": "92756.9", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "105", "valid_best_loss": "19.196"}
+[2025-07-10 22:33:01,923][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 35 @ 105 updates
+[2025-07-10 22:33:01,924][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint35.pt
+[2025-07-10 22:33:02,302][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint35.pt
+[2025-07-10 22:33:03,055][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint35.pt (epoch 35 @ 105 updates, score 19.196) (writing took 1.13133093200031 seconds)
+[2025-07-10 22:33:03,055][fairseq_cli.train][INFO] - end of epoch 35 (average epoch stats below)
+[2025-07-10 22:33:03,056][train][INFO] - {"epoch": 35, "train_loss": "20.583", "train_nll_loss": "0.049", "train_loss_recon": "0.745", "train_loss_info_nce": "13.124", "train_ppl": "1.03", "train_wps": "2487.7", "train_ups": "0.8", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "105", "train_lr": "2.625e-06", "train_gnorm": "14.079", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "113"}
+[2025-07-10 22:33:03,095][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:03,097][fairseq.trainer][INFO] - begin training epoch 36
+[2025-07-10 22:33:03,097][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:05,411][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 36 @ 108 updates
+[2025-07-10 22:33:05,411][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint36.pt
+[2025-07-10 22:33:05,796][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint36.pt
+[2025-07-10 22:33:06,119][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint36.pt (epoch 36 @ 108 updates, score None) (writing took 0.7083055169996442 seconds)
+[2025-07-10 22:33:06,119][fairseq_cli.train][INFO] - end of epoch 36 (average epoch stats below)
+[2025-07-10 22:33:06,120][train][INFO] - {"epoch": 36, "train_loss": "20.378", "train_nll_loss": "0.048", "train_loss_recon": "0.738", "train_loss_info_nce": "12.993", "train_ppl": "1.03", "train_wps": "3030.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "108", "train_lr": "2.7e-06", "train_gnorm": "13.487", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "116"}
+[2025-07-10 22:33:06,157][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:06,159][fairseq.trainer][INFO] - begin training epoch 37
+[2025-07-10 22:33:06,159][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:08,438][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 37 @ 111 updates
+[2025-07-10 22:33:08,438][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint37.pt
+[2025-07-10 22:33:08,820][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint37.pt
+[2025-07-10 22:33:09,154][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint37.pt (epoch 37 @ 111 updates, score None) (writing took 0.7154936460001409 seconds)
+[2025-07-10 22:33:09,154][fairseq_cli.train][INFO] - end of epoch 37 (average epoch stats below)
+[2025-07-10 22:33:09,155][train][INFO] - {"epoch": 37, "train_loss": "20.184", "train_nll_loss": "0.048", "train_loss_recon": "0.729", "train_loss_info_nce": "12.886", "train_ppl": "1.03", "train_wps": "3060.4", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "111", "train_lr": "2.775e-06", "train_gnorm": "13.038", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "119"}
+[2025-07-10 22:33:09,194][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:09,196][fairseq.trainer][INFO] - begin training epoch 38
+[2025-07-10 22:33:09,196][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:11,489][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 38 @ 114 updates
+[2025-07-10 22:33:11,490][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint38.pt
+[2025-07-10 22:33:11,858][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint38.pt
+[2025-07-10 22:33:12,173][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint38.pt (epoch 38 @ 114 updates, score None) (writing took 0.6832799909998357 seconds)
+[2025-07-10 22:33:12,173][fairseq_cli.train][INFO] - end of epoch 38 (average epoch stats below)
+[2025-07-10 22:33:12,174][train][INFO] - {"epoch": 38, "train_loss": "19.967", "train_nll_loss": "0.047", "train_loss_recon": "0.721", "train_loss_info_nce": "12.75", "train_ppl": "1.03", "train_wps": "3076.3", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "114", "train_lr": "2.85e-06", "train_gnorm": "12.492", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "122"}
+[2025-07-10 22:33:12,209][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:12,211][fairseq.trainer][INFO] - begin training epoch 39
+[2025-07-10 22:33:12,211][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:14,537][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 39 @ 117 updates
+[2025-07-10 22:33:14,538][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint39.pt
+[2025-07-10 22:33:14,911][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint39.pt
+[2025-07-10 22:33:15,230][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint39.pt (epoch 39 @ 117 updates, score None) (writing took 0.6921930549997342 seconds)
+[2025-07-10 22:33:15,230][fairseq_cli.train][INFO] - end of epoch 39 (average epoch stats below)
+[2025-07-10 22:33:15,231][train][INFO] - {"epoch": 39, "train_loss": "19.738", "train_nll_loss": "0.047", "train_loss_recon": "0.711", "train_loss_info_nce": "12.619", "train_ppl": "1.03", "train_wps": "3038.2", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "117", "train_lr": "2.925e-06", "train_gnorm": "12.004", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "125"}
+[2025-07-10 22:33:15,266][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:15,267][fairseq.trainer][INFO] - begin training epoch 40
+[2025-07-10 22:33:15,267][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:17,589][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:33:17,804][valid][INFO] - {"epoch": 40, "valid_loss": "18.071", "valid_nll_loss": "0.043", "valid_loss_recon": "0.652", "valid_loss_info_nce": "11.555", "valid_ppl": "1.03", "valid_wps": "94217.3", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "120", "valid_best_loss": "18.071"}
+[2025-07-10 22:33:17,805][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 40 @ 120 updates
+[2025-07-10 22:33:17,805][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint40.pt
+[2025-07-10 22:33:18,191][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint40.pt
+[2025-07-10 22:33:18,817][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint40.pt (epoch 40 @ 120 updates, score 18.071) (writing took 1.0117115510001895 seconds)
+[2025-07-10 22:33:18,817][fairseq_cli.train][INFO] - end of epoch 40 (average epoch stats below)
+[2025-07-10 22:33:18,818][train][INFO] - {"epoch": 40, "train_loss": "19.534", "train_nll_loss": "0.046", "train_loss_recon": "0.702", "train_loss_info_nce": "12.5", "train_ppl": "1.03", "train_wps": "2588.9", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "120", "train_lr": "3e-06", "train_gnorm": "11.569", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "129"}
+[2025-07-10 22:33:18,855][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:18,856][fairseq.trainer][INFO] - begin training epoch 41
+[2025-07-10 22:33:18,857][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:21,125][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 41 @ 123 updates
+[2025-07-10 22:33:21,125][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint41.pt
+[2025-07-10 22:33:21,501][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint41.pt
+[2025-07-10 22:33:21,801][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint41.pt (epoch 41 @ 123 updates, score None) (writing took 0.6767428000002838 seconds)
+[2025-07-10 22:33:21,802][fairseq_cli.train][INFO] - end of epoch 41 (average epoch stats below)
+[2025-07-10 22:33:21,803][train][INFO] - {"epoch": 41, "train_loss": "19.335", "train_nll_loss": "0.046", "train_loss_recon": "0.694", "train_loss_info_nce": "12.395", "train_ppl": "1.03", "train_wps": "3112", "train_ups": "1.01", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "123", "train_lr": "3.075e-06", "train_gnorm": "11.138", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "132"}
+[2025-07-10 22:33:21,838][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:21,839][fairseq.trainer][INFO] - begin training epoch 42
+[2025-07-10 22:33:21,839][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:24,166][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 42 @ 126 updates
+[2025-07-10 22:33:24,167][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint42.pt
+[2025-07-10 22:33:24,542][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint42.pt
+[2025-07-10 22:33:25,003][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint42.pt (epoch 42 @ 126 updates, score None) (writing took 0.836249811000016 seconds)
+[2025-07-10 22:33:25,003][fairseq_cli.train][INFO] - end of epoch 42 (average epoch stats below)
+[2025-07-10 22:33:25,004][train][INFO] - {"epoch": 42, "train_loss": "19.142", "train_nll_loss": "0.045", "train_loss_recon": "0.684", "train_loss_info_nce": "12.286", "train_ppl": "1.03", "train_wps": "2900.9", "train_ups": "0.94", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "126", "train_lr": "3.15e-06", "train_gnorm": "10.808", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "135"}
+[2025-07-10 22:33:25,041][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:25,043][fairseq.trainer][INFO] - begin training epoch 43
+[2025-07-10 22:33:25,043][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:27,388][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 43 @ 129 updates
+[2025-07-10 22:33:27,389][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint43.pt
+[2025-07-10 22:33:27,764][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint43.pt
+[2025-07-10 22:33:28,091][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint43.pt (epoch 43 @ 129 updates, score None) (writing took 0.7023993080001674 seconds)
+[2025-07-10 22:33:28,091][fairseq_cli.train][INFO] - end of epoch 43 (average epoch stats below)
+[2025-07-10 22:33:28,092][train][INFO] - {"epoch": 43, "train_loss": "18.937", "train_nll_loss": "0.045", "train_loss_recon": "0.676", "train_loss_info_nce": "12.175", "train_ppl": "1.03", "train_wps": "3007.1", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "129", "train_lr": "3.225e-06", "train_gnorm": "10.469", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "138"}
+[2025-07-10 22:33:28,126][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:28,127][fairseq.trainer][INFO] - begin training epoch 44
+[2025-07-10 22:33:28,128][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:30,434][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 44 @ 132 updates
+[2025-07-10 22:33:30,435][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint44.pt
+[2025-07-10 22:33:30,812][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint44.pt
+[2025-07-10 22:33:31,138][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint44.pt (epoch 44 @ 132 updates, score None) (writing took 0.703145986999516 seconds)
+[2025-07-10 22:33:31,138][fairseq_cli.train][INFO] - end of epoch 44 (average epoch stats below)
+[2025-07-10 22:33:31,139][train][INFO] - {"epoch": 44, "train_loss": "18.735", "train_nll_loss": "0.044", "train_loss_recon": "0.666", "train_loss_info_nce": "12.068", "train_ppl": "1.03", "train_wps": "3048.1", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "132", "train_lr": "3.3e-06", "train_gnorm": "10.15", "train_clip": "100", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "141"}
+[2025-07-10 22:33:31,171][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:31,173][fairseq.trainer][INFO] - begin training epoch 45
+[2025-07-10 22:33:31,173][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:33,465][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:33:33,681][valid][INFO] - {"epoch": 45, "valid_loss": "17.046", "valid_nll_loss": "0.04", "valid_loss_recon": "0.604", "valid_loss_info_nce": "11.006", "valid_ppl": "1.03", "valid_wps": "94574.3", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "135", "valid_best_loss": "17.046"}
+[2025-07-10 22:33:33,683][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 45 @ 135 updates
+[2025-07-10 22:33:33,683][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint45.pt
+[2025-07-10 22:33:34,053][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint45.pt
+[2025-07-10 22:33:34,667][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint45.pt (epoch 45 @ 135 updates, score 17.046) (writing took 0.9844878700005211 seconds)
+[2025-07-10 22:33:34,667][fairseq_cli.train][INFO] - end of epoch 45 (average epoch stats below)
+[2025-07-10 22:33:34,668][train][INFO] - {"epoch": 45, "train_loss": "18.546", "train_nll_loss": "0.044", "train_loss_recon": "0.657", "train_loss_info_nce": "11.975", "train_ppl": "1.03", "train_wps": "2631.3", "train_ups": "0.85", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "135", "train_lr": "3.375e-06", "train_gnorm": "9.898", "train_clip": "33.3", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "145"}
+[2025-07-10 22:33:34,703][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:34,705][fairseq.trainer][INFO] - begin training epoch 46
+[2025-07-10 22:33:34,705][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:37,044][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 46 @ 138 updates
+[2025-07-10 22:33:37,045][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint46.pt
+[2025-07-10 22:33:37,416][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint46.pt
+[2025-07-10 22:33:37,739][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint46.pt (epoch 46 @ 138 updates, score None) (writing took 0.6947984600001291 seconds)
+[2025-07-10 22:33:37,739][fairseq_cli.train][INFO] - end of epoch 46 (average epoch stats below)
+[2025-07-10 22:33:37,740][train][INFO] - {"epoch": 46, "train_loss": "18.337", "train_nll_loss": "0.043", "train_loss_recon": "0.648", "train_loss_info_nce": "11.861", "train_ppl": "1.03", "train_wps": "3023.3", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "138", "train_lr": "3.45e-06", "train_gnorm": "9.511", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "148"}
+[2025-07-10 22:33:37,775][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:37,776][fairseq.trainer][INFO] - begin training epoch 47
+[2025-07-10 22:33:37,777][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:40,112][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 47 @ 141 updates
+[2025-07-10 22:33:40,113][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint47.pt
+[2025-07-10 22:33:40,485][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint47.pt
+[2025-07-10 22:33:40,801][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint47.pt (epoch 47 @ 141 updates, score None) (writing took 0.6886406970006647 seconds)
+[2025-07-10 22:33:40,801][fairseq_cli.train][INFO] - end of epoch 47 (average epoch stats below)
+[2025-07-10 22:33:40,802][train][INFO] - {"epoch": 47, "train_loss": "18.168", "train_nll_loss": "0.043", "train_loss_recon": "0.639", "train_loss_info_nce": "11.767", "train_ppl": "1.03", "train_wps": "3033.4", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "141", "train_lr": "3.525e-06", "train_gnorm": "9.099", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "151"}
+[2025-07-10 22:33:40,838][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:40,840][fairseq.trainer][INFO] - begin training epoch 48
+[2025-07-10 22:33:40,840][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:43,164][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 48 @ 144 updates
+[2025-07-10 22:33:43,165][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint48.pt
+[2025-07-10 22:33:43,537][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint48.pt
+[2025-07-10 22:33:43,950][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint48.pt (epoch 48 @ 144 updates, score None) (writing took 0.7855439840004692 seconds)
+[2025-07-10 22:33:43,950][fairseq_cli.train][INFO] - end of epoch 48 (average epoch stats below)
+[2025-07-10 22:33:43,951][train][INFO] - {"epoch": 48, "train_loss": "17.955", "train_nll_loss": "0.043", "train_loss_recon": "0.629", "train_loss_info_nce": "11.665", "train_ppl": "1.03", "train_wps": "2949", "train_ups": "0.95", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "144", "train_lr": "3.6e-06", "train_gnorm": "8.856", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "154"}
+[2025-07-10 22:33:43,987][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:43,989][fairseq.trainer][INFO] - begin training epoch 49
+[2025-07-10 22:33:43,989][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:46,334][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 49 @ 147 updates
+[2025-07-10 22:33:46,335][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint49.pt
+[2025-07-10 22:33:46,724][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint49.pt
+[2025-07-10 22:33:47,033][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint49.pt (epoch 49 @ 147 updates, score None) (writing took 0.6988161600002059 seconds)
+[2025-07-10 22:33:47,033][fairseq_cli.train][INFO] - end of epoch 49 (average epoch stats below)
+[2025-07-10 22:33:47,034][train][INFO] - {"epoch": 49, "train_loss": "17.773", "train_nll_loss": "0.042", "train_loss_recon": "0.62", "train_loss_info_nce": "11.563", "train_ppl": "1.03", "train_wps": "3012.3", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "147", "train_lr": "3.675e-06", "train_gnorm": "8.514", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "157"}
+[2025-07-10 22:33:47,075][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:47,077][fairseq.trainer][INFO] - begin training epoch 50
+[2025-07-10 22:33:47,078][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:49,412][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:33:49,635][valid][INFO] - {"epoch": 50, "valid_loss": "16.149", "valid_nll_loss": "0.038", "valid_loss_recon": "0.559", "valid_loss_info_nce": "10.557", "valid_ppl": "1.03", "valid_wps": "86840.7", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "150", "valid_best_loss": "16.149"}
+[2025-07-10 22:33:49,636][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 50 @ 150 updates
+[2025-07-10 22:33:49,637][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint50.pt
+[2025-07-10 22:33:50,019][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint50.pt
+[2025-07-10 22:33:50,625][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint50.pt (epoch 50 @ 150 updates, score 16.149) (writing took 0.988937807000184 seconds)
+[2025-07-10 22:33:50,625][fairseq_cli.train][INFO] - end of epoch 50 (average epoch stats below)
+[2025-07-10 22:33:50,626][train][INFO] - {"epoch": 50, "train_loss": "17.606", "train_nll_loss": "0.042", "train_loss_recon": "0.613", "train_loss_info_nce": "11.474", "train_ppl": "1.03", "train_wps": "2585.3", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "150", "train_lr": "3.75e-06", "train_gnorm": "8.272", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "161"}
+[2025-07-10 22:33:50,665][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:50,667][fairseq.trainer][INFO] - begin training epoch 51
+[2025-07-10 22:33:50,667][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:52,941][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 51 @ 153 updates
+[2025-07-10 22:33:52,941][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint51.pt
+[2025-07-10 22:33:53,339][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint51.pt
+[2025-07-10 22:33:53,654][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint51.pt (epoch 51 @ 153 updates, score None) (writing took 0.7135358719997384 seconds)
+[2025-07-10 22:33:53,655][fairseq_cli.train][INFO] - end of epoch 51 (average epoch stats below)
+[2025-07-10 22:33:53,656][train][INFO] - {"epoch": 51, "train_loss": "17.428", "train_nll_loss": "0.041", "train_loss_recon": "0.603", "train_loss_info_nce": "11.392", "train_ppl": "1.03", "train_wps": "3065.6", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "153", "train_lr": "3.825e-06", "train_gnorm": "7.996", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "164"}
+[2025-07-10 22:33:53,695][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:53,696][fairseq.trainer][INFO] - begin training epoch 52
+[2025-07-10 22:33:53,697][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:56,022][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 52 @ 156 updates
+[2025-07-10 22:33:56,022][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint52.pt
+[2025-07-10 22:33:56,405][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint52.pt
+[2025-07-10 22:33:56,711][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint52.pt (epoch 52 @ 156 updates, score None) (writing took 0.6888726819997828 seconds)
+[2025-07-10 22:33:56,711][fairseq_cli.train][INFO] - end of epoch 52 (average epoch stats below)
+[2025-07-10 22:33:56,712][train][INFO] - {"epoch": 52, "train_loss": "17.236", "train_nll_loss": "0.041", "train_loss_recon": "0.594", "train_loss_info_nce": "11.287", "train_ppl": "1.03", "train_wps": "3038.7", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "156", "train_lr": "3.9e-06", "train_gnorm": "7.706", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "167"}
+[2025-07-10 22:33:56,746][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:56,747][fairseq.trainer][INFO] - begin training epoch 53
+[2025-07-10 22:33:56,748][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:33:59,064][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 53 @ 159 updates
+[2025-07-10 22:33:59,064][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint53.pt
+[2025-07-10 22:33:59,469][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint53.pt
+[2025-07-10 22:33:59,787][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint53.pt (epoch 53 @ 159 updates, score None) (writing took 0.7231343860003108 seconds)
+[2025-07-10 22:33:59,787][fairseq_cli.train][INFO] - end of epoch 53 (average epoch stats below)
+[2025-07-10 22:33:59,788][train][INFO] - {"epoch": 53, "train_loss": "17.096", "train_nll_loss": "0.041", "train_loss_recon": "0.587", "train_loss_info_nce": "11.22", "train_ppl": "1.03", "train_wps": "3019", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "159", "train_lr": "3.975e-06", "train_gnorm": "7.55", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "170"}
+[2025-07-10 22:33:59,821][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:33:59,823][fairseq.trainer][INFO] - begin training epoch 54
+[2025-07-10 22:33:59,823][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:02,143][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 54 @ 162 updates
+[2025-07-10 22:34:02,143][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint54.pt
+[2025-07-10 22:34:02,537][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint54.pt
+[2025-07-10 22:34:02,851][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint54.pt (epoch 54 @ 162 updates, score None) (writing took 0.7083435100003044 seconds)
+[2025-07-10 22:34:02,852][fairseq_cli.train][INFO] - end of epoch 54 (average epoch stats below)
+[2025-07-10 22:34:02,853][train][INFO] - {"epoch": 54, "train_loss": "16.92", "train_nll_loss": "0.04", "train_loss_recon": "0.579", "train_loss_info_nce": "11.127", "train_ppl": "1.03", "train_wps": "3030.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "162", "train_lr": "4.05e-06", "train_gnorm": "7.306", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "173"}
+[2025-07-10 22:34:02,890][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:02,893][fairseq.trainer][INFO] - begin training epoch 55
+[2025-07-10 22:34:02,893][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:05,153][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:34:05,375][valid][INFO] - {"epoch": 55, "valid_loss": "15.286", "valid_nll_loss": "0.036", "valid_loss_recon": "0.516", "valid_loss_info_nce": "10.127", "valid_ppl": "1.03", "valid_wps": "89508.5", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "165", "valid_best_loss": "15.286"}
+[2025-07-10 22:34:05,375][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 55 @ 165 updates
+[2025-07-10 22:34:05,376][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint55.pt
+[2025-07-10 22:34:05,789][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint55.pt
+[2025-07-10 22:34:06,673][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint55.pt (epoch 55 @ 165 updates, score 15.286) (writing took 1.2974184310005512 seconds)
+[2025-07-10 22:34:06,673][fairseq_cli.train][INFO] - end of epoch 55 (average epoch stats below)
+[2025-07-10 22:34:06,674][train][INFO] - {"epoch": 55, "train_loss": "16.778", "train_nll_loss": "0.04", "train_loss_recon": "0.572", "train_loss_info_nce": "11.056", "train_ppl": "1.03", "train_wps": "2430.1", "train_ups": "0.79", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "165", "train_lr": "4.125e-06", "train_gnorm": "7.228", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "177"}
+[2025-07-10 22:34:06,713][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:06,715][fairseq.trainer][INFO] - begin training epoch 56
+[2025-07-10 22:34:06,716][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:09,054][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 56 @ 168 updates
+[2025-07-10 22:34:09,054][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint56.pt
+[2025-07-10 22:34:09,449][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint56.pt
+[2025-07-10 22:34:09,787][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint56.pt (epoch 56 @ 168 updates, score None) (writing took 0.7336122589995284 seconds)
+[2025-07-10 22:34:09,788][fairseq_cli.train][INFO] - end of epoch 56 (average epoch stats below)
+[2025-07-10 22:34:09,789][train][INFO] - {"epoch": 56, "train_loss": "16.613", "train_nll_loss": "0.039", "train_loss_recon": "0.564", "train_loss_info_nce": "10.966", "train_ppl": "1.03", "train_wps": "2982.1", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "168", "train_lr": "4.2e-06", "train_gnorm": "6.86", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "180"}
+[2025-07-10 22:34:09,825][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:09,827][fairseq.trainer][INFO] - begin training epoch 57
+[2025-07-10 22:34:09,827][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:12,115][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 57 @ 171 updates
+[2025-07-10 22:34:12,115][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint57.pt
+[2025-07-10 22:34:12,507][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint57.pt
+[2025-07-10 22:34:12,856][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint57.pt (epoch 57 @ 171 updates, score None) (writing took 0.7408299170001555 seconds)
+[2025-07-10 22:34:12,856][fairseq_cli.train][INFO] - end of epoch 57 (average epoch stats below)
+[2025-07-10 22:34:12,857][train][INFO] - {"epoch": 57, "train_loss": "16.459", "train_nll_loss": "0.039", "train_loss_recon": "0.557", "train_loss_info_nce": "10.886", "train_ppl": "1.03", "train_wps": "3026.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "171", "train_lr": "4.275e-06", "train_gnorm": "6.535", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "183"}
+[2025-07-10 22:34:12,889][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:12,890][fairseq.trainer][INFO] - begin training epoch 58
+[2025-07-10 22:34:12,891][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:15,231][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 58 @ 174 updates
+[2025-07-10 22:34:15,232][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint58.pt
+[2025-07-10 22:34:15,610][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint58.pt
+[2025-07-10 22:34:15,944][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint58.pt (epoch 58 @ 174 updates, score None) (writing took 0.7131133009997939 seconds)
+[2025-07-10 22:34:15,945][fairseq_cli.train][INFO] - end of epoch 58 (average epoch stats below)
+[2025-07-10 22:34:15,946][train][INFO] - {"epoch": 58, "train_loss": "16.341", "train_nll_loss": "0.039", "train_loss_recon": "0.552", "train_loss_info_nce": "10.817", "train_ppl": "1.03", "train_wps": "3006.8", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "174", "train_lr": "4.35e-06", "train_gnorm": "6.61", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "186"}
+[2025-07-10 22:34:15,978][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:15,979][fairseq.trainer][INFO] - begin training epoch 59
+[2025-07-10 22:34:15,980][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:18,288][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 59 @ 177 updates
+[2025-07-10 22:34:18,289][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint59.pt
+[2025-07-10 22:34:18,659][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint59.pt
+[2025-07-10 22:34:19,016][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint59.pt (epoch 59 @ 177 updates, score None) (writing took 0.727371261999906 seconds)
+[2025-07-10 22:34:19,016][fairseq_cli.train][INFO] - end of epoch 59 (average epoch stats below)
+[2025-07-10 22:34:19,017][train][INFO] - {"epoch": 59, "train_loss": "16.172", "train_nll_loss": "0.038", "train_loss_recon": "0.543", "train_loss_info_nce": "10.737", "train_ppl": "1.03", "train_wps": "3023.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "177", "train_lr": "4.425e-06", "train_gnorm": "6.342", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "189"}
+[2025-07-10 22:34:19,050][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:19,052][fairseq.trainer][INFO] - begin training epoch 60
+[2025-07-10 22:34:19,052][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:21,361][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:34:21,584][valid][INFO] - {"epoch": 60, "valid_loss": "14.552", "valid_nll_loss": "0.034", "valid_loss_recon": "0.479", "valid_loss_info_nce": "9.76", "valid_ppl": "1.02", "valid_wps": "92987.7", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "180", "valid_best_loss": "14.552"}
+[2025-07-10 22:34:21,585][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 60 @ 180 updates
+[2025-07-10 22:34:21,585][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint60.pt
+[2025-07-10 22:34:21,960][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint60.pt
+[2025-07-10 22:34:22,591][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint60.pt (epoch 60 @ 180 updates, score 14.552) (writing took 1.0056004079997365 seconds)
+[2025-07-10 22:34:22,591][fairseq_cli.train][INFO] - end of epoch 60 (average epoch stats below)
+[2025-07-10 22:34:22,592][train][INFO] - {"epoch": 60, "train_loss": "16.022", "train_nll_loss": "0.038", "train_loss_recon": "0.536", "train_loss_info_nce": "10.657", "train_ppl": "1.03", "train_wps": "2597.9", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "180", "train_lr": "4.5e-06", "train_gnorm": "6.045", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "193"}
+[2025-07-10 22:34:22,627][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:22,629][fairseq.trainer][INFO] - begin training epoch 61
+[2025-07-10 22:34:22,629][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:24,913][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 61 @ 183 updates
+[2025-07-10 22:34:24,913][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint61.pt
+[2025-07-10 22:34:25,291][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint61.pt
+[2025-07-10 22:34:25,626][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint61.pt (epoch 61 @ 183 updates, score None) (writing took 0.7137785840004653 seconds)
+[2025-07-10 22:34:25,627][fairseq_cli.train][INFO] - end of epoch 61 (average epoch stats below)
+[2025-07-10 22:34:25,628][train][INFO] - {"epoch": 61, "train_loss": "15.907", "train_nll_loss": "0.038", "train_loss_recon": "0.53", "train_loss_info_nce": "10.598", "train_ppl": "1.03", "train_wps": "3059", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "183", "train_lr": "4.575e-06", "train_gnorm": "5.906", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "196"}
+[2025-07-10 22:34:25,664][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:25,665][fairseq.trainer][INFO] - begin training epoch 62
+[2025-07-10 22:34:25,666][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:27,949][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 62 @ 186 updates
+[2025-07-10 22:34:27,949][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint62.pt
+[2025-07-10 22:34:28,328][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint62.pt
+[2025-07-10 22:34:28,742][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint62.pt (epoch 62 @ 186 updates, score None) (writing took 0.7934288470005413 seconds)
+[2025-07-10 22:34:28,742][fairseq_cli.train][INFO] - end of epoch 62 (average epoch stats below)
+[2025-07-10 22:34:28,744][train][INFO] - {"epoch": 62, "train_loss": "15.808", "train_nll_loss": "0.037", "train_loss_recon": "0.526", "train_loss_info_nce": "10.544", "train_ppl": "1.03", "train_wps": "2980.9", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "186", "train_lr": "4.65e-06", "train_gnorm": "6.426", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "199"}
+[2025-07-10 22:34:28,780][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:28,782][fairseq.trainer][INFO] - begin training epoch 63
+[2025-07-10 22:34:28,782][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:31,105][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 63 @ 189 updates
+[2025-07-10 22:34:31,106][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint63.pt
+[2025-07-10 22:34:31,481][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint63.pt
+[2025-07-10 22:34:31,798][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint63.pt (epoch 63 @ 189 updates, score None) (writing took 0.6928723060000266 seconds)
+[2025-07-10 22:34:31,799][fairseq_cli.train][INFO] - end of epoch 63 (average epoch stats below)
+[2025-07-10 22:34:31,800][train][INFO] - {"epoch": 63, "train_loss": "15.645", "train_nll_loss": "0.037", "train_loss_recon": "0.518", "train_loss_info_nce": "10.464", "train_ppl": "1.03", "train_wps": "3038.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "189", "train_lr": "4.725e-06", "train_gnorm": "5.575", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "202"}
+[2025-07-10 22:34:31,836][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:31,838][fairseq.trainer][INFO] - begin training epoch 64
+[2025-07-10 22:34:31,838][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:34,146][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 64 @ 192 updates
+[2025-07-10 22:34:34,146][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint64.pt
+[2025-07-10 22:34:34,546][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint64.pt
+[2025-07-10 22:34:34,885][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint64.pt (epoch 64 @ 192 updates, score None) (writing took 0.739463180999337 seconds)
+[2025-07-10 22:34:34,885][fairseq_cli.train][INFO] - end of epoch 64 (average epoch stats below)
+[2025-07-10 22:34:34,886][train][INFO] - {"epoch": 64, "train_loss": "15.517", "train_nll_loss": "0.037", "train_loss_recon": "0.512", "train_loss_info_nce": "10.394", "train_ppl": "1.03", "train_wps": "3008.8", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "192", "train_lr": "4.8e-06", "train_gnorm": "5.711", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "205"}
+[2025-07-10 22:34:34,920][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:34,922][fairseq.trainer][INFO] - begin training epoch 65
+[2025-07-10 22:34:34,922][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:37,186][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:34:37,409][valid][INFO] - {"epoch": 65, "valid_loss": "14.024", "valid_nll_loss": "0.033", "valid_loss_recon": "0.451", "valid_loss_info_nce": "9.512", "valid_ppl": "1.02", "valid_wps": "90860.6", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "195", "valid_best_loss": "14.024"}
+[2025-07-10 22:34:37,410][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 65 @ 195 updates
+[2025-07-10 22:34:37,410][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint65.pt
+[2025-07-10 22:34:37,793][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint65.pt
+[2025-07-10 22:34:38,439][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint65.pt (epoch 65 @ 195 updates, score 14.024) (writing took 1.0292660639997848 seconds)
+[2025-07-10 22:34:38,439][fairseq_cli.train][INFO] - end of epoch 65 (average epoch stats below)
+[2025-07-10 22:34:38,440][train][INFO] - {"epoch": 65, "train_loss": "15.427", "train_nll_loss": "0.037", "train_loss_recon": "0.507", "train_loss_info_nce": "10.346", "train_ppl": "1.03", "train_wps": "2613.3", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "195", "train_lr": "4.875e-06", "train_gnorm": "5.067", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "208"}
+[2025-07-10 22:34:38,476][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:38,477][fairseq.trainer][INFO] - begin training epoch 66
+[2025-07-10 22:34:38,478][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:40,780][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 66 @ 198 updates
+[2025-07-10 22:34:40,781][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint66.pt
+[2025-07-10 22:34:41,177][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint66.pt
+[2025-07-10 22:34:41,490][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint66.pt (epoch 66 @ 198 updates, score None) (writing took 0.7101711589994011 seconds)
+[2025-07-10 22:34:41,491][fairseq_cli.train][INFO] - end of epoch 66 (average epoch stats below)
+[2025-07-10 22:34:41,491][train][INFO] - {"epoch": 66, "train_loss": "15.295", "train_nll_loss": "0.036", "train_loss_recon": "0.501", "train_loss_info_nce": "10.278", "train_ppl": "1.03", "train_wps": "3043.4", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "198", "train_lr": "4.95e-06", "train_gnorm": "5.409", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "211"}
+[2025-07-10 22:34:41,528][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:41,530][fairseq.trainer][INFO] - begin training epoch 67
+[2025-07-10 22:34:41,530][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:43,365][train_inner][INFO] - {"epoch": 67, "update": 66.667, "loss": "17.679", "nll_loss": "0.042", "loss_recon": "0.615", "loss_info_nce": "11.535", "ppl": "1.03", "wps": "2896.2", "ups": "0.94", "wpb": "3097.5", "bsz": "329.5", "num_updates": "200", "lr": "5e-06", "gnorm": "8.733", "clip": "33", "loss_scale": "128", "train_wall": "57", "gb_free": "12.3", "wall": "213"}
+[2025-07-10 22:34:43,366][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:34:43,591][valid][INFO] - {"epoch": 67, "valid_loss": "13.786", "valid_nll_loss": "0.033", "valid_loss_recon": "0.439", "valid_loss_info_nce": "9.4", "valid_ppl": "1.02", "valid_wps": "87027.4", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "200", "valid_best_loss": "13.786"}
+[2025-07-10 22:34:43,592][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 67 @ 200 updates
+[2025-07-10 22:34:43,593][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint_67_200.pt
+[2025-07-10 22:34:43,983][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint_67_200.pt
+[2025-07-10 22:34:44,623][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_67_200.pt (epoch 67 @ 200 updates, score 13.786) (writing took 1.0304222790000495 seconds)
+[2025-07-10 22:34:45,157][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 67 @ 201 updates
+[2025-07-10 22:34:45,157][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint67.pt
+[2025-07-10 22:34:45,572][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint67.pt
+[2025-07-10 22:34:45,896][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint67.pt (epoch 67 @ 201 updates, score None) (writing took 0.739143246999447 seconds)
+[2025-07-10 22:34:45,896][fairseq_cli.train][INFO] - end of epoch 67 (average epoch stats below)
+[2025-07-10 22:34:45,897][train][INFO] - {"epoch": 67, "train_loss": "15.181", "train_nll_loss": "0.036", "train_loss_recon": "0.496", "train_loss_info_nce": "10.22", "train_ppl": "1.03", "train_wps": "2107.8", "train_ups": "0.68", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "201", "train_lr": "5.025e-06", "train_gnorm": "5.328", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "216"}
+[2025-07-10 22:34:45,935][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:45,937][fairseq.trainer][INFO] - begin training epoch 68
+[2025-07-10 22:34:45,938][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:48,248][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 68 @ 204 updates
+[2025-07-10 22:34:48,249][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint68.pt
+[2025-07-10 22:34:48,647][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint68.pt
+[2025-07-10 22:34:48,962][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint68.pt (epoch 68 @ 204 updates, score None) (writing took 0.7142377270001816 seconds)
+[2025-07-10 22:34:48,963][fairseq_cli.train][INFO] - end of epoch 68 (average epoch stats below)
+[2025-07-10 22:34:48,964][train][INFO] - {"epoch": 68, "train_loss": "15.073", "train_nll_loss": "0.036", "train_loss_recon": "0.49", "train_loss_info_nce": "10.167", "train_ppl": "1.03", "train_wps": "3028.3", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "204", "train_lr": "5.1e-06", "train_gnorm": "4.796", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "219"}
+[2025-07-10 22:34:48,998][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:49,000][fairseq.trainer][INFO] - begin training epoch 69
+[2025-07-10 22:34:49,000][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:51,317][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 69 @ 207 updates
+[2025-07-10 22:34:51,317][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint69.pt
+[2025-07-10 22:34:51,709][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint69.pt
+[2025-07-10 22:34:52,165][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint69.pt (epoch 69 @ 207 updates, score None) (writing took 0.8488170020000325 seconds)
+[2025-07-10 22:34:52,166][fairseq_cli.train][INFO] - end of epoch 69 (average epoch stats below)
+[2025-07-10 22:34:52,167][train][INFO] - {"epoch": 69, "train_loss": "15.002", "train_nll_loss": "0.036", "train_loss_recon": "0.487", "train_loss_info_nce": "10.126", "train_ppl": "1.02", "train_wps": "2899.4", "train_ups": "0.94", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "207", "train_lr": "5.175e-06", "train_gnorm": "4.952", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "222"}
+[2025-07-10 22:34:52,202][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:52,203][fairseq.trainer][INFO] - begin training epoch 70
+[2025-07-10 22:34:52,203][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:54,539][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:34:54,752][valid][INFO] - {"epoch": 70, "valid_loss": "13.518", "valid_nll_loss": "0.032", "valid_loss_recon": "0.427", "valid_loss_info_nce": "9.248", "valid_ppl": "1.02", "valid_wps": "93270.8", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "210", "valid_best_loss": "13.518"}
+[2025-07-10 22:34:54,753][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 70 @ 210 updates
+[2025-07-10 22:34:54,753][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint70.pt
+[2025-07-10 22:34:55,150][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint70.pt
+[2025-07-10 22:34:55,790][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint70.pt (epoch 70 @ 210 updates, score 13.518) (writing took 1.0374656180001693 seconds)
+[2025-07-10 22:34:55,790][fairseq_cli.train][INFO] - end of epoch 70 (average epoch stats below)
+[2025-07-10 22:34:55,791][train][INFO] - {"epoch": 70, "train_loss": "14.896", "train_nll_loss": "0.035", "train_loss_recon": "0.482", "train_loss_info_nce": "10.068", "train_ppl": "1.02", "train_wps": "2562.1", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "210", "train_lr": "5.25e-06", "train_gnorm": "4.422", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "226"}
+[2025-07-10 22:34:55,823][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:55,825][fairseq.trainer][INFO] - begin training epoch 71
+[2025-07-10 22:34:55,825][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:34:58,007][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 71 @ 213 updates
+[2025-07-10 22:34:58,007][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint71.pt
+[2025-07-10 22:34:58,393][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint71.pt
+[2025-07-10 22:34:58,744][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint71.pt (epoch 71 @ 213 updates, score None) (writing took 0.7373355370000354 seconds)
+[2025-07-10 22:34:58,744][fairseq_cli.train][INFO] - end of epoch 71 (average epoch stats below)
+[2025-07-10 22:34:58,745][train][INFO] - {"epoch": 71, "train_loss": "14.794", "train_nll_loss": "0.035", "train_loss_recon": "0.477", "train_loss_info_nce": "10.019", "train_ppl": "1.02", "train_wps": "3144", "train_ups": "1.02", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "213", "train_lr": "5.325e-06", "train_gnorm": "4.323", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "229"}
+[2025-07-10 22:34:58,782][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:34:58,783][fairseq.trainer][INFO] - begin training epoch 72
+[2025-07-10 22:34:58,784][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:01,081][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 72 @ 216 updates
+[2025-07-10 22:35:01,082][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint72.pt
+[2025-07-10 22:35:01,468][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint72.pt
+[2025-07-10 22:35:01,807][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint72.pt (epoch 72 @ 216 updates, score None) (writing took 0.7263024699996095 seconds)
+[2025-07-10 22:35:01,808][fairseq_cli.train][INFO] - end of epoch 72 (average epoch stats below)
+[2025-07-10 22:35:01,809][train][INFO] - {"epoch": 72, "train_loss": "14.693", "train_nll_loss": "0.035", "train_loss_recon": "0.472", "train_loss_info_nce": "9.968", "train_ppl": "1.02", "train_wps": "3031.5", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "216", "train_lr": "5.4e-06", "train_gnorm": "4.137", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "232"}
+[2025-07-10 22:35:01,842][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:01,844][fairseq.trainer][INFO] - begin training epoch 73
+[2025-07-10 22:35:01,844][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:04,172][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 73 @ 219 updates
+[2025-07-10 22:35:04,172][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint73.pt
+[2025-07-10 22:35:04,551][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint73.pt
+[2025-07-10 22:35:04,916][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint73.pt (epoch 73 @ 219 updates, score None) (writing took 0.7435264790001384 seconds)
+[2025-07-10 22:35:04,916][fairseq_cli.train][INFO] - end of epoch 73 (average epoch stats below)
+[2025-07-10 22:35:04,917][train][INFO] - {"epoch": 73, "train_loss": "14.624", "train_nll_loss": "0.035", "train_loss_recon": "0.469", "train_loss_info_nce": "9.935", "train_ppl": "1.02", "train_wps": "2988", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "219", "train_lr": "5.475e-06", "train_gnorm": "4.17", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "235"}
+[2025-07-10 22:35:04,949][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:04,951][fairseq.trainer][INFO] - begin training epoch 74
+[2025-07-10 22:35:04,951][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:07,292][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 74 @ 222 updates
+[2025-07-10 22:35:07,293][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint74.pt
+[2025-07-10 22:35:07,676][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint74.pt
+[2025-07-10 22:35:08,009][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint74.pt (epoch 74 @ 222 updates, score None) (writing took 0.7170943319997605 seconds)
+[2025-07-10 22:35:08,009][fairseq_cli.train][INFO] - end of epoch 74 (average epoch stats below)
+[2025-07-10 22:35:08,011][train][INFO] - {"epoch": 74, "train_loss": "14.516", "train_nll_loss": "0.034", "train_loss_recon": "0.464", "train_loss_info_nce": "9.877", "train_ppl": "1.02", "train_wps": "3002.1", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "222", "train_lr": "5.55e-06", "train_gnorm": "3.542", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "238"}
+[2025-07-10 22:35:08,047][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:08,049][fairseq.trainer][INFO] - begin training epoch 75
+[2025-07-10 22:35:08,049][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:10,364][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:35:10,580][valid][INFO] - {"epoch": 75, "valid_loss": "13.147", "valid_nll_loss": "0.031", "valid_loss_recon": "0.408", "valid_loss_info_nce": "9.071", "valid_ppl": "1.02", "valid_wps": "90180.2", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "225", "valid_best_loss": "13.147"}
+[2025-07-10 22:35:10,580][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 75 @ 225 updates
+[2025-07-10 22:35:10,581][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint75.pt
+[2025-07-10 22:35:10,958][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint75.pt
+[2025-07-10 22:35:11,843][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint75.pt (epoch 75 @ 225 updates, score 13.147) (writing took 1.2632406439997794 seconds)
+[2025-07-10 22:35:11,844][fairseq_cli.train][INFO] - end of epoch 75 (average epoch stats below)
+[2025-07-10 22:35:11,845][train][INFO] - {"epoch": 75, "train_loss": "14.463", "train_nll_loss": "0.034", "train_loss_recon": "0.462", "train_loss_info_nce": "9.843", "train_ppl": "1.02", "train_wps": "2422", "train_ups": "0.78", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "225", "train_lr": "5.625e-06", "train_gnorm": "5.201", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "242"}
+[2025-07-10 22:35:11,883][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:11,885][fairseq.trainer][INFO] - begin training epoch 76
+[2025-07-10 22:35:11,885][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:14,226][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 76 @ 228 updates
+[2025-07-10 22:35:14,227][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint76.pt
+[2025-07-10 22:35:14,607][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint76.pt
+[2025-07-10 22:35:14,939][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint76.pt (epoch 76 @ 228 updates, score None) (writing took 0.7120887849996507 seconds)
+[2025-07-10 22:35:14,939][fairseq_cli.train][INFO] - end of epoch 76 (average epoch stats below)
+[2025-07-10 22:35:14,940][train][INFO] - {"epoch": 76, "train_loss": "14.378", "train_nll_loss": "0.034", "train_loss_recon": "0.458", "train_loss_info_nce": "9.804", "train_ppl": "1.02", "train_wps": "3000.7", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "228", "train_lr": "5.7e-06", "train_gnorm": "5.171", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "245"}
+[2025-07-10 22:35:14,973][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:14,974][fairseq.trainer][INFO] - begin training epoch 77
+[2025-07-10 22:35:14,974][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:17,289][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 77 @ 231 updates
+[2025-07-10 22:35:17,289][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint77.pt
+[2025-07-10 22:35:17,682][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint77.pt
+[2025-07-10 22:35:18,019][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint77.pt (epoch 77 @ 231 updates, score None) (writing took 0.7300672569999733 seconds)
+[2025-07-10 22:35:18,019][fairseq_cli.train][INFO] - end of epoch 77 (average epoch stats below)
+[2025-07-10 22:35:18,020][train][INFO] - {"epoch": 77, "train_loss": "14.313", "train_nll_loss": "0.034", "train_loss_recon": "0.455", "train_loss_info_nce": "9.76", "train_ppl": "1.02", "train_wps": "3015.2", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "231", "train_lr": "5.775e-06", "train_gnorm": "4.341", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "248"}
+[2025-07-10 22:35:18,055][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:18,056][fairseq.trainer][INFO] - begin training epoch 78
+[2025-07-10 22:35:18,057][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:20,354][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 78 @ 234 updates
+[2025-07-10 22:35:20,354][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint78.pt
+[2025-07-10 22:35:20,738][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint78.pt
+[2025-07-10 22:35:21,073][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint78.pt (epoch 78 @ 234 updates, score None) (writing took 0.7194661660005295 seconds)
+[2025-07-10 22:35:21,074][fairseq_cli.train][INFO] - end of epoch 78 (average epoch stats below)
+[2025-07-10 22:35:21,075][train][INFO] - {"epoch": 78, "train_loss": "14.234", "train_nll_loss": "0.034", "train_loss_recon": "0.451", "train_loss_info_nce": "9.721", "train_ppl": "1.02", "train_wps": "3040.5", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "234", "train_lr": "5.85e-06", "train_gnorm": "5.667", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "251"}
+[2025-07-10 22:35:21,113][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:21,114][fairseq.trainer][INFO] - begin training epoch 79
+[2025-07-10 22:35:21,115][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:23,415][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 79 @ 237 updates
+[2025-07-10 22:35:23,415][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint79.pt
+[2025-07-10 22:35:23,814][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint79.pt
+[2025-07-10 22:35:24,166][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint79.pt (epoch 79 @ 237 updates, score None) (writing took 0.7515196049998849 seconds)
+[2025-07-10 22:35:24,166][fairseq_cli.train][INFO] - end of epoch 79 (average epoch stats below)
+[2025-07-10 22:35:24,168][train][INFO] - {"epoch": 79, "train_loss": "14.178", "train_nll_loss": "0.034", "train_loss_recon": "0.448", "train_loss_info_nce": "9.69", "train_ppl": "1.02", "train_wps": "3003.7", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "237", "train_lr": "5.925e-06", "train_gnorm": "3.984", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "254"}
+[2025-07-10 22:35:24,199][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:24,201][fairseq.trainer][INFO] - begin training epoch 80
+[2025-07-10 22:35:24,201][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:26,527][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:35:26,748][valid][INFO] - {"epoch": 80, "valid_loss": "12.876", "valid_nll_loss": "0.031", "valid_loss_recon": "0.393", "valid_loss_info_nce": "8.941", "valid_ppl": "1.02", "valid_wps": "78904.3", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "240", "valid_best_loss": "12.876"}
+[2025-07-10 22:35:26,748][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 80 @ 240 updates
+[2025-07-10 22:35:26,749][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint80.pt
+[2025-07-10 22:35:27,138][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint80.pt
+[2025-07-10 22:35:27,775][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint80.pt (epoch 80 @ 240 updates, score 12.876) (writing took 1.0262987819996852 seconds)
+[2025-07-10 22:35:27,775][fairseq_cli.train][INFO] - end of epoch 80 (average epoch stats below)
+[2025-07-10 22:35:27,776][train][INFO] - {"epoch": 80, "train_loss": "14.099", "train_nll_loss": "0.033", "train_loss_recon": "0.445", "train_loss_info_nce": "9.649", "train_ppl": "1.02", "train_wps": "2573.7", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "240", "train_lr": "6e-06", "train_gnorm": "3.346", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "258"}
+[2025-07-10 22:35:27,811][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:27,813][fairseq.trainer][INFO] - begin training epoch 81
+[2025-07-10 22:35:27,813][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:30,134][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 81 @ 243 updates
+[2025-07-10 22:35:30,134][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint81.pt
+[2025-07-10 22:35:30,531][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint81.pt
+[2025-07-10 22:35:30,859][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint81.pt (epoch 81 @ 243 updates, score None) (writing took 0.725329509000403 seconds)
+[2025-07-10 22:35:30,859][fairseq_cli.train][INFO] - end of epoch 81 (average epoch stats below)
+[2025-07-10 22:35:30,860][train][INFO] - {"epoch": 81, "train_loss": "14.034", "train_nll_loss": "0.033", "train_loss_recon": "0.442", "train_loss_info_nce": "9.615", "train_ppl": "1.02", "train_wps": "3011.3", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "243", "train_lr": "6.075e-06", "train_gnorm": "2.898", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "261"}
+[2025-07-10 22:35:30,898][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:30,900][fairseq.trainer][INFO] - begin training epoch 82
+[2025-07-10 22:35:30,900][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:33,224][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 82 @ 246 updates
+[2025-07-10 22:35:33,225][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint82.pt
+[2025-07-10 22:35:33,611][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint82.pt
+[2025-07-10 22:35:33,999][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint82.pt (epoch 82 @ 246 updates, score None) (writing took 0.7745641390001765 seconds)
+[2025-07-10 22:35:33,999][fairseq_cli.train][INFO] - end of epoch 82 (average epoch stats below)
+[2025-07-10 22:35:34,000][train][INFO] - {"epoch": 82, "train_loss": "13.994", "train_nll_loss": "0.033", "train_loss_recon": "0.44", "train_loss_info_nce": "9.592", "train_ppl": "1.02", "train_wps": "2957.7", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "246", "train_lr": "6.15e-06", "train_gnorm": "3.346", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "264"}
+[2025-07-10 22:35:34,037][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:34,039][fairseq.trainer][INFO] - begin training epoch 83
+[2025-07-10 22:35:34,040][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:36,411][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 83 @ 249 updates
+[2025-07-10 22:35:36,411][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint83.pt
+[2025-07-10 22:35:36,788][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint83.pt
+[2025-07-10 22:35:37,116][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint83.pt (epoch 83 @ 249 updates, score None) (writing took 0.7050903919998746 seconds)
+[2025-07-10 22:35:37,116][fairseq_cli.train][INFO] - end of epoch 83 (average epoch stats below)
+[2025-07-10 22:35:37,117][train][INFO] - {"epoch": 83, "train_loss": "13.932", "train_nll_loss": "0.033", "train_loss_recon": "0.437", "train_loss_info_nce": "9.561", "train_ppl": "1.02", "train_wps": "2979.5", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "249", "train_lr": "6.225e-06", "train_gnorm": "2.986", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "267"}
+[2025-07-10 22:35:37,152][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:37,154][fairseq.trainer][INFO] - begin training epoch 84
+[2025-07-10 22:35:37,154][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:39,474][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 84 @ 252 updates
+[2025-07-10 22:35:39,474][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint84.pt
+[2025-07-10 22:35:39,846][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint84.pt
+[2025-07-10 22:35:40,179][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint84.pt (epoch 84 @ 252 updates, score None) (writing took 0.7046266209999885 seconds)
+[2025-07-10 22:35:40,179][fairseq_cli.train][INFO] - end of epoch 84 (average epoch stats below)
+[2025-07-10 22:35:40,180][train][INFO] - {"epoch": 84, "train_loss": "13.873", "train_nll_loss": "0.033", "train_loss_recon": "0.434", "train_loss_info_nce": "9.534", "train_ppl": "1.02", "train_wps": "3032.3", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "252", "train_lr": "6.3e-06", "train_gnorm": "2.522", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "270"}
+[2025-07-10 22:35:40,213][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:40,214][fairseq.trainer][INFO] - begin training epoch 85
+[2025-07-10 22:35:40,214][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:42,531][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:35:42,747][valid][INFO] - {"epoch": 85, "valid_loss": "12.596", "valid_nll_loss": "0.03", "valid_loss_recon": "0.376", "valid_loss_info_nce": "8.835", "valid_ppl": "1.02", "valid_wps": "93646.4", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "255", "valid_best_loss": "12.596"}
+[2025-07-10 22:35:42,748][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 85 @ 255 updates
+[2025-07-10 22:35:42,748][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint85.pt
+[2025-07-10 22:35:43,121][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint85.pt
+[2025-07-10 22:35:43,768][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint85.pt (epoch 85 @ 255 updates, score 12.596) (writing took 1.020119406000049 seconds)
+[2025-07-10 22:35:43,768][fairseq_cli.train][INFO] - end of epoch 85 (average epoch stats below)
+[2025-07-10 22:35:43,769][train][INFO] - {"epoch": 85, "train_loss": "13.846", "train_nll_loss": "0.033", "train_loss_recon": "0.433", "train_loss_info_nce": "9.511", "train_ppl": "1.02", "train_wps": "2587.4", "train_ups": "0.84", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "255", "train_lr": "6.375e-06", "train_gnorm": "2.447", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "274"}
+[2025-07-10 22:35:43,807][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:43,809][fairseq.trainer][INFO] - begin training epoch 86
+[2025-07-10 22:35:43,809][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:46,151][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 86 @ 258 updates
+[2025-07-10 22:35:46,151][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint86.pt
+[2025-07-10 22:35:46,524][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint86.pt
+[2025-07-10 22:35:46,854][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint86.pt (epoch 86 @ 258 updates, score None) (writing took 0.7026216040003419 seconds)
+[2025-07-10 22:35:46,854][fairseq_cli.train][INFO] - end of epoch 86 (average epoch stats below)
+[2025-07-10 22:35:46,855][train][INFO] - {"epoch": 86, "train_loss": "13.783", "train_nll_loss": "0.033", "train_loss_recon": "0.43", "train_loss_info_nce": "9.484", "train_ppl": "1.02", "train_wps": "3009.8", "train_ups": "0.97", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "258", "train_lr": "6.45e-06", "train_gnorm": "2.523", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "277"}
+[2025-07-10 22:35:46,893][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:46,895][fairseq.trainer][INFO] - begin training epoch 87
+[2025-07-10 22:35:46,896][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:49,217][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 87 @ 261 updates
+[2025-07-10 22:35:49,218][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint87.pt
+[2025-07-10 22:35:49,597][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint87.pt
+[2025-07-10 22:35:49,928][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint87.pt (epoch 87 @ 261 updates, score None) (writing took 0.7101904390001437 seconds)
+[2025-07-10 22:35:49,928][fairseq_cli.train][INFO] - end of epoch 87 (average epoch stats below)
+[2025-07-10 22:35:49,929][train][INFO] - {"epoch": 87, "train_loss": "13.734", "train_nll_loss": "0.033", "train_loss_recon": "0.427", "train_loss_info_nce": "9.46", "train_ppl": "1.02", "train_wps": "3021.6", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "261", "train_lr": "6.525e-06", "train_gnorm": "3.396", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "280"}
+[2025-07-10 22:35:49,968][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:49,971][fairseq.trainer][INFO] - begin training epoch 88
+[2025-07-10 22:35:49,971][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:52,293][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 88 @ 264 updates
+[2025-07-10 22:35:52,293][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint88.pt
+[2025-07-10 22:35:52,668][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint88.pt
+[2025-07-10 22:35:53,003][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint88.pt (epoch 88 @ 264 updates, score None) (writing took 0.7104906049999045 seconds)
+[2025-07-10 22:35:53,004][fairseq_cli.train][INFO] - end of epoch 88 (average epoch stats below)
+[2025-07-10 22:35:53,005][train][INFO] - {"epoch": 88, "train_loss": "13.689", "train_nll_loss": "0.032", "train_loss_recon": "0.426", "train_loss_info_nce": "9.432", "train_ppl": "1.02", "train_wps": "3019.3", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "264", "train_lr": "6.6e-06", "train_gnorm": "3.567", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "283"}
+[2025-07-10 22:35:53,044][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:53,046][fairseq.trainer][INFO] - begin training epoch 89
+[2025-07-10 22:35:53,046][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:55,174][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 89 @ 267 updates
+[2025-07-10 22:35:55,174][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint89.pt
+[2025-07-10 22:35:55,548][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint89.pt
+[2025-07-10 22:35:55,924][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint89.pt (epoch 89 @ 267 updates, score None) (writing took 0.750371441000425 seconds)
+[2025-07-10 22:35:55,924][fairseq_cli.train][INFO] - end of epoch 89 (average epoch stats below)
+[2025-07-10 22:35:55,925][train][INFO] - {"epoch": 89, "train_loss": "13.658", "train_nll_loss": "0.032", "train_loss_recon": "0.424", "train_loss_info_nce": "9.412", "train_ppl": "1.02", "train_wps": "3179.9", "train_ups": "1.03", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "267", "train_lr": "6.675e-06", "train_gnorm": "5.754", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "286"}
+[2025-07-10 22:35:55,962][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:55,964][fairseq.trainer][INFO] - begin training epoch 90
+[2025-07-10 22:35:55,964][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:35:58,308][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:35:58,530][valid][INFO] - {"epoch": 90, "valid_loss": "12.478", "valid_nll_loss": "0.03", "valid_loss_recon": "0.373", "valid_loss_info_nce": "8.745", "valid_ppl": "1.02", "valid_wps": "91269", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "270", "valid_best_loss": "12.478"}
+[2025-07-10 22:35:58,531][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 90 @ 270 updates
+[2025-07-10 22:35:58,531][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint90.pt
+[2025-07-10 22:35:58,902][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint90.pt
+[2025-07-10 22:35:59,539][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint90.pt (epoch 90 @ 270 updates, score 12.478) (writing took 1.0084349489998203 seconds)
+[2025-07-10 22:35:59,539][fairseq_cli.train][INFO] - end of epoch 90 (average epoch stats below)
+[2025-07-10 22:35:59,541][train][INFO] - {"epoch": 90, "train_loss": "13.605", "train_nll_loss": "0.032", "train_loss_recon": "0.422", "train_loss_info_nce": "9.386", "train_ppl": "1.02", "train_wps": "2568.8", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "270", "train_lr": "6.75e-06", "train_gnorm": "3.405", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "290"}
+[2025-07-10 22:35:59,580][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:35:59,582][fairseq.trainer][INFO] - begin training epoch 91
+[2025-07-10 22:35:59,583][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:01,876][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 91 @ 273 updates
+[2025-07-10 22:36:01,876][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint91.pt
+[2025-07-10 22:36:02,250][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint91.pt
+[2025-07-10 22:36:02,574][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint91.pt (epoch 91 @ 273 updates, score None) (writing took 0.6977695629993832 seconds)
+[2025-07-10 22:36:02,574][fairseq_cli.train][INFO] - end of epoch 91 (average epoch stats below)
+[2025-07-10 22:36:02,575][train][INFO] - {"epoch": 91, "train_loss": "13.564", "train_nll_loss": "0.032", "train_loss_recon": "0.42", "train_loss_info_nce": "9.367", "train_ppl": "1.02", "train_wps": "3060.5", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "273", "train_lr": "6.825e-06", "train_gnorm": "3.38", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "293"}
+[2025-07-10 22:36:02,610][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:02,612][fairseq.trainer][INFO] - begin training epoch 92
+[2025-07-10 22:36:02,612][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:04,906][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 92 @ 276 updates
+[2025-07-10 22:36:04,907][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint92.pt
+[2025-07-10 22:36:05,297][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint92.pt
+[2025-07-10 22:36:05,613][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint92.pt (epoch 92 @ 276 updates, score None) (writing took 0.7071900060000189 seconds)
+[2025-07-10 22:36:05,614][fairseq_cli.train][INFO] - end of epoch 92 (average epoch stats below)
+[2025-07-10 22:36:05,615][train][INFO] - {"epoch": 92, "train_loss": "13.533", "train_nll_loss": "0.032", "train_loss_recon": "0.419", "train_loss_info_nce": "9.345", "train_ppl": "1.02", "train_wps": "3055.5", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "276", "train_lr": "6.9e-06", "train_gnorm": "2.518", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "296"}
+[2025-07-10 22:36:05,651][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:05,653][fairseq.trainer][INFO] - begin training epoch 93
+[2025-07-10 22:36:05,653][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:07,943][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 93 @ 279 updates
+[2025-07-10 22:36:07,943][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint93.pt
+[2025-07-10 22:36:08,317][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint93.pt
+[2025-07-10 22:36:08,642][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint93.pt (epoch 93 @ 279 updates, score None) (writing took 0.6991896099998485 seconds)
+[2025-07-10 22:36:08,642][fairseq_cli.train][INFO] - end of epoch 93 (average epoch stats below)
+[2025-07-10 22:36:08,643][train][INFO] - {"epoch": 93, "train_loss": "13.499", "train_nll_loss": "0.032", "train_loss_recon": "0.417", "train_loss_info_nce": "9.326", "train_ppl": "1.02", "train_wps": "3066.3", "train_ups": "0.99", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "279", "train_lr": "6.975e-06", "train_gnorm": "2.481", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "299"}
+[2025-07-10 22:36:08,677][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:08,678][fairseq.trainer][INFO] - begin training epoch 94
+[2025-07-10 22:36:08,679][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:10,999][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 94 @ 282 updates
+[2025-07-10 22:36:11,000][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint94.pt
+[2025-07-10 22:36:11,396][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint94.pt
+[2025-07-10 22:36:11,713][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint94.pt (epoch 94 @ 282 updates, score None) (writing took 0.7134633229998144 seconds)
+[2025-07-10 22:36:11,713][fairseq_cli.train][INFO] - end of epoch 94 (average epoch stats below)
+[2025-07-10 22:36:11,714][train][INFO] - {"epoch": 94, "train_loss": "13.458", "train_nll_loss": "0.032", "train_loss_recon": "0.415", "train_loss_info_nce": "9.304", "train_ppl": "1.02", "train_wps": "3024.1", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "282", "train_lr": "7.05e-06", "train_gnorm": "2.641", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "302"}
+[2025-07-10 22:36:11,746][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:11,748][fairseq.trainer][INFO] - begin training epoch 95
+[2025-07-10 22:36:11,748][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:14,085][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:36:14,307][valid][INFO] - {"epoch": 95, "valid_loss": "12.369", "valid_nll_loss": "0.029", "valid_loss_recon": "0.367", "valid_loss_info_nce": "8.703", "valid_ppl": "1.02", "valid_wps": "93359.6", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "285", "valid_best_loss": "12.369"}
+[2025-07-10 22:36:14,308][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 95 @ 285 updates
+[2025-07-10 22:36:14,308][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint95.pt
+[2025-07-10 22:36:14,689][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint95.pt
+[2025-07-10 22:36:15,332][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint95.pt (epoch 95 @ 285 updates, score 12.369) (writing took 1.0243868720008322 seconds)
+[2025-07-10 22:36:15,332][fairseq_cli.train][INFO] - end of epoch 95 (average epoch stats below)
+[2025-07-10 22:36:15,333][train][INFO] - {"epoch": 95, "train_loss": "13.441", "train_nll_loss": "0.032", "train_loss_recon": "0.415", "train_loss_info_nce": "9.294", "train_ppl": "1.02", "train_wps": "2566.1", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "285", "train_lr": "7.125e-06", "train_gnorm": "2.587", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "305"}
+[2025-07-10 22:36:15,372][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:15,373][fairseq.trainer][INFO] - begin training epoch 96
+[2025-07-10 22:36:15,374][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:17,704][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 96 @ 288 updates
+[2025-07-10 22:36:17,705][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint96.pt
+[2025-07-10 22:36:18,096][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint96.pt
+[2025-07-10 22:36:18,521][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint96.pt (epoch 96 @ 288 updates, score None) (writing took 0.8170955499999764 seconds)
+[2025-07-10 22:36:18,521][fairseq_cli.train][INFO] - end of epoch 96 (average epoch stats below)
+[2025-07-10 22:36:18,522][train][INFO] - {"epoch": 96, "train_loss": "13.41", "train_nll_loss": "0.032", "train_loss_recon": "0.413", "train_loss_info_nce": "9.275", "train_ppl": "1.02", "train_wps": "2912", "train_ups": "0.94", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "288", "train_lr": "7.2e-06", "train_gnorm": "1.865", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "309"}
+[2025-07-10 22:36:18,562][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:18,565][fairseq.trainer][INFO] - begin training epoch 97
+[2025-07-10 22:36:18,565][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:20,918][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 97 @ 291 updates
+[2025-07-10 22:36:20,919][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint97.pt
+[2025-07-10 22:36:21,301][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint97.pt
+[2025-07-10 22:36:21,635][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint97.pt (epoch 97 @ 291 updates, score None) (writing took 0.71700067600068 seconds)
+[2025-07-10 22:36:21,636][fairseq_cli.train][INFO] - end of epoch 97 (average epoch stats below)
+[2025-07-10 22:36:21,637][train][INFO] - {"epoch": 97, "train_loss": "13.376", "train_nll_loss": "0.032", "train_loss_recon": "0.412", "train_loss_info_nce": "9.259", "train_ppl": "1.02", "train_wps": "2982.1", "train_ups": "0.96", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "291", "train_lr": "7.275e-06", "train_gnorm": "2.302", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "312"}
+[2025-07-10 22:36:21,671][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:21,673][fairseq.trainer][INFO] - begin training epoch 98
+[2025-07-10 22:36:21,673][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:23,981][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 98 @ 294 updates
+[2025-07-10 22:36:23,981][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint98.pt
+[2025-07-10 22:36:24,361][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint98.pt
+[2025-07-10 22:36:24,699][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint98.pt (epoch 98 @ 294 updates, score None) (writing took 0.7183763119992363 seconds)
+[2025-07-10 22:36:24,700][fairseq_cli.train][INFO] - end of epoch 98 (average epoch stats below)
+[2025-07-10 22:36:24,701][train][INFO] - {"epoch": 98, "train_loss": "13.352", "train_nll_loss": "0.032", "train_loss_recon": "0.411", "train_loss_info_nce": "9.244", "train_ppl": "1.02", "train_wps": "3030.9", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "294", "train_lr": "7.35e-06", "train_gnorm": "2.271", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "315"}
+[2025-07-10 22:36:24,737][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:24,739][fairseq.trainer][INFO] - begin training epoch 99
+[2025-07-10 22:36:24,740][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:27,042][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 99 @ 297 updates
+[2025-07-10 22:36:27,043][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint99.pt
+[2025-07-10 22:36:27,426][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint99.pt
+[2025-07-10 22:36:27,767][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint99.pt (epoch 99 @ 297 updates, score None) (writing took 0.7244383360002757 seconds)
+[2025-07-10 22:36:27,767][fairseq_cli.train][INFO] - end of epoch 99 (average epoch stats below)
+[2025-07-10 22:36:27,768][train][INFO] - {"epoch": 99, "train_loss": "13.335", "train_nll_loss": "0.032", "train_loss_recon": "0.41", "train_loss_info_nce": "9.231", "train_ppl": "1.02", "train_wps": "3027.4", "train_ups": "0.98", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "297", "train_lr": "7.425e-06", "train_gnorm": "3.029", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "318"}
+[2025-07-10 22:36:27,800][fairseq.data.iterators][INFO] - grouped total_num_itrs = 3
+[2025-07-10 22:36:27,801][fairseq.trainer][INFO] - begin training epoch 100
+[2025-07-10 22:36:27,802][fairseq_cli.train][INFO] - Start iterating over samples
+[2025-07-10 22:36:30,124][train_inner][INFO] - {"epoch": 100, "update": 100.0, "loss": "14", "nll_loss": "0.033", "loss_recon": "0.44", "loss_info_nce": "9.596", "ppl": "1.02", "wps": "2893.5", "ups": "0.94", "wpb": "3089", "bsz": "329.2", "num_updates": "300", "lr": "7.5e-06", "gnorm": "3.613", "clip": "0", "loss_scale": "128", "train_wall": "57", "gb_free": "12.3", "wall": "320"}
+[2025-07-10 22:36:30,124][fairseq_cli.train][INFO] - Stopping training due to num_updates: 300 >= max_update: 300
+[2025-07-10 22:36:30,124][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2025-07-10 22:36:30,340][valid][INFO] - {"epoch": 100, "valid_loss": "12.288", "valid_nll_loss": "0.029", "valid_loss_recon": "0.362", "valid_loss_info_nce": "8.668", "valid_ppl": "1.02", "valid_wps": "90911", "valid_wpb": "422", "valid_bsz": "26.5", "valid_num_updates": "300", "valid_best_loss": "12.288"}
+[2025-07-10 22:36:30,340][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 100 @ 300 updates
+[2025-07-10 22:36:30,341][fairseq.trainer][INFO] - Saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint100.pt
+[2025-07-10 22:36:30,715][fairseq.trainer][INFO] - Finished saving checkpoint to /home/incantator/Documents/mbari-mae/outputs/mae_ast_batch_sweep_20250710_211226/config_12_4enc_1dec_high_mask/checkpoints/checkpoint100.pt
+[2025-07-10 22:36:31,364][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint100.pt (epoch 100 @ 300 updates, score 12.288) (writing took 1.0234463759998107 seconds)
+[2025-07-10 22:36:31,364][fairseq_cli.train][INFO] - end of epoch 100 (average epoch stats below)
+[2025-07-10 22:36:31,365][train][INFO] - {"epoch": 100, "train_loss": "13.301", "train_nll_loss": "0.032", "train_loss_recon": "0.408", "train_loss_info_nce": "9.215", "train_ppl": "1.02", "train_wps": "2581.8", "train_ups": "0.83", "train_wpb": "3094.7", "train_bsz": "329.7", "train_num_updates": "300", "train_lr": "7.5e-06", "train_gnorm": "4.898", "train_clip": "0", "train_loss_scale": "128", "train_train_wall": "2", "train_gb_free": "12.3", "train_wall": "321"}
+[2025-07-10 22:36:31,365][fairseq_cli.train][INFO] - done training in 320.9 seconds

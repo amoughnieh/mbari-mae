@@ -74,9 +74,11 @@ EOF
         model.random_mask_prob="${mask_prob}" \
         hydra.run.dir="${run_dir}" \
         optimization.max_update=300 \
-        dataset.validate_interval=5 \
-        dataset.validate_interval_updates=100 \
-        checkpoint.save_interval_updates=100 \
+        dataset.validate_interval=50 \
+        dataset.validate_interval_updates=300 \
+        checkpoint.save_interval_updates=300 \
+        checkpoint.keep_interval_updates=1 \
+        checkpoint.no_epoch_checkpoints=true \
         common.log_interval=100 || success=false
     
     local end_time=$(date +%s)

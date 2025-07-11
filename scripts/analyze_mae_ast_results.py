@@ -46,24 +46,24 @@ class MAEASTResultsAnalyzer:
             
             for line in lines:
                 if 'train_loss' in line:
-                    # Extract training loss
-                    match = re.search(r'"train_loss":\s*([0-9.]+)', line)
+                    # Extract training loss (handle both quoted and unquoted numbers)
+                    match = re.search(r'"train_loss":\s*"?([0-9.]+)"?', line)
                     if match:
                         train_losses.append(float(match.group(1)))
                 
                 if 'valid_loss' in line:
-                    # Extract validation loss
-                    match = re.search(r'"valid_loss":\s*([0-9.]+)', line)
+                    # Extract validation loss (handle both quoted and unquoted numbers)
+                    match = re.search(r'"valid_loss":\s*"?([0-9.]+)"?', line)
                     if match:
                         valid_losses.append(float(match.group(1)))
                 
                 if 'reconstruction_loss' in line:
-                    match = re.search(r'"reconstruction_loss":\s*([0-9.]+)', line)
+                    match = re.search(r'"reconstruction_loss":\s*"?([0-9.]+)"?', line)
                     if match:
                         recon_losses.append(float(match.group(1)))
                 
                 if 'classification_loss' in line:
-                    match = re.search(r'"classification_loss":\s*([0-9.]+)', line)
+                    match = re.search(r'"classification_loss":\s*"?([0-9.]+)"?', line)
                     if match:
                         class_losses.append(float(match.group(1)))
             
@@ -210,12 +210,17 @@ class MAEASTResultsAnalyzer:
             completed_df = df[df['completed'] == True]
             
             if not completed_df.empty:
-                sns.boxplot(data=completed_df, x='encoder_layers', y='best_valid_loss')
-                plt.title('Validation Loss vs Encoder Layers')
-                plt.ylabel('Best Validation Loss')
-                plt.xlabel('Number of Encoder Layers')
-                plt.savefig(output_dir / 'loss_vs_encoder_layers.png', dpi=300, bbox_inches='tight')
-                plt.close()
+                # Clean the data for boxplot
+                plot_df = completed_df[['encoder_layers', 'best_valid_loss']].dropna()
+                if not plot_df.empty:
+                    # Convert encoder_layers to string to ensure categorical plotting
+                    plot_df['encoder_layers'] = plot_df['encoder_layers'].astype(str)
+                    sns.boxplot(data=plot_df, x='encoder_layers', y='best_valid_loss')
+                    plt.title('Validation Loss vs Encoder Layers')
+                    plt.ylabel('Best Validation Loss')
+                    plt.xlabel('Number of Encoder Layers')
+                    plt.savefig(output_dir / 'loss_vs_encoder_layers.png', dpi=300, bbox_inches='tight')
+                    plt.close()
         
         # Plot 2: Learning Rate Analysis
         if 'lr' in df.columns and 'best_valid_loss' in df.columns:
@@ -239,12 +244,17 @@ class MAEASTResultsAnalyzer:
             completed_df = df[df['completed'] == True]
             
             if not completed_df.empty:
-                sns.boxplot(data=completed_df, x='random_mask_prob', y='best_valid_loss')
-                plt.title('Validation Loss vs Mask Probability')
-                plt.ylabel('Best Validation Loss')
-                plt.xlabel('Random Mask Probability')
-                plt.savefig(output_dir / 'loss_vs_mask_prob.png', dpi=300, bbox_inches='tight')
-                plt.close()
+                # Clean the data for boxplot
+                plot_df = completed_df[['random_mask_prob', 'best_valid_loss']].dropna()
+                if not plot_df.empty:
+                    # Convert random_mask_prob to string to ensure categorical plotting
+                    plot_df['random_mask_prob'] = plot_df['random_mask_prob'].astype(str)
+                    sns.boxplot(data=plot_df, x='random_mask_prob', y='best_valid_loss')
+                    plt.title('Validation Loss vs Mask Probability')
+                    plt.ylabel('Best Validation Loss')
+                    plt.xlabel('Random Mask Probability')
+                    plt.savefig(output_dir / 'loss_vs_mask_prob.png', dpi=300, bbox_inches='tight')
+                    plt.close()
         
         # Plot 4: Convergence Analysis
         if 'convergence_epoch' in df.columns and 'total_epochs' in df.columns:
@@ -315,24 +325,34 @@ class MAEASTResultsAnalyzer:
             # Best configurations
             completed_df = df[df['completed'] == True]
             if not completed_df.empty and 'best_valid_loss' in completed_df.columns:
-                best_idx = completed_df['best_valid_loss'].idxmin()
-                best_config = completed_df.loc[best_idx]
-                
-                f.write("Best Configuration (Lowest Validation Loss):\n")
-                f.write("-" * 40 + "\n")
-                for key, value in best_config.items():
-                    if key not in ['config_dir', 'completed']:
-                        f.write(f"{key}: {value}\n")
-                f.write("\n")
+                # Check if we have valid best_valid_loss values
+                valid_loss_df = completed_df[completed_df['best_valid_loss'].notna()]
+                if not valid_loss_df.empty:
+                    best_idx = valid_loss_df['best_valid_loss'].idxmin()
+                    best_config = completed_df.loc[best_idx]
+                    
+                    f.write("Best Configuration (Lowest Validation Loss):\n")
+                    f.write("-" * 40 + "\n")
+                    for key, value in best_config.items():
+                        if key not in ['config_dir', 'completed']:
+                            f.write(f"{key}: {value}\n")
+                    f.write("\n")
+                else:
+                    f.write("No valid validation loss data found for completed experiments.\n\n")
                 
                 # Parameter analysis
                 f.write("Parameter Analysis:\n")
                 f.write("-" * 20 + "\n")
                 
                 for param in ['encoder_layers', 'decoder_layers', 'lr', 'warmup_updates', 'random_mask_prob']:
-                    if param in completed_df.columns:
-                        corr = completed_df[param].corr(completed_df['best_valid_loss'])
-                        f.write(f"{param}: correlation with loss = {corr:.3f}\n")
+                    if param in completed_df.columns and 'best_valid_loss' in completed_df.columns:
+                        # Only calculate correlation if we have valid data
+                        valid_data = completed_df[[param, 'best_valid_loss']].dropna()
+                        if len(valid_data) > 1:
+                            corr = valid_data[param].corr(valid_data['best_valid_loss'])
+                            f.write(f"{param}: correlation with loss = {corr:.3f}\n")
+                        else:
+                            f.write(f"{param}: insufficient data for correlation\n")
                 
                 f.write("\n")
             

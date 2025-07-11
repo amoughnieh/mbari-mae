@@ -1,0 +1,46 @@
+MAE-AST Parameter Sweep Analysis Report
+==================================================
+
+Total experiments: 17
+Completed experiments: 17
+Success rate: 100.00%
+
+Best Configuration (Lowest Validation Loss):
+----------------------------------------
+config_name: config_09_4enc_1dec_high_lr
+encoder_layers: 4
+decoder_layers: 1
+max_tokens: 1048576
+warmup_updates: 4000
+update_freq: 8
+lr: 0.0005
+random_mask_prob: 0.75
+final_train_loss: 12.388
+final_valid_loss: 11.586
+best_valid_loss: 11.586
+final_reconstruction_loss: None
+final_classification_loss: None
+convergence_epoch: 22
+total_epochs: 100
+
+Parameter Analysis:
+--------------------
+encoder_layers: correlation with loss = 0.065
+decoder_layers: correlation with loss = -0.237
+lr: correlation with loss = -0.311
+warmup_updates: correlation with loss = 0.954
+random_mask_prob: correlation with loss = 0.060
+
+Summary Statistics:
+--------------------
+       encoder_layers  decoder_layers    max_tokens  warmup_updates  ...  final_valid_loss  best_valid_loss  convergence_epoch  total_epochs
+count       17.000000       17.000000  1.700000e+01       17.000000  ...         17.000000        17.000000          17.000000      17.00000
+mean         4.705882        1.117647  1.089920e+06     6117.647059  ...         12.487824        12.487529          21.823529     100.00000
+std          1.403776        0.332106  1.167099e+05     4029.304421  ...          1.227955         1.228055           3.046213      17.67767
+min          2.000000        1.000000  1.048576e+06     4000.000000  ...         11.586000        11.586000          12.000000      50.00000
+25%          4.000000        1.000000  1.048576e+06     4000.000000  ...         11.824000        11.824000          22.000000     100.00000
+50%          4.000000        1.000000  1.048576e+06     4000.000000  ...         12.048000        12.048000          22.000000     100.00000
+75%          6.000000        1.000000  1.048576e+06     8000.000000  ...         12.288000        12.288000          22.000000     100.00000
+max          8.000000        2.000000  1.400000e+06    16000.000000  ...         15.698000        15.698000          29.000000     150.00000
+
+[8 rows x 12 columns]

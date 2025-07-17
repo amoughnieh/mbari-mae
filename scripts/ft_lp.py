@@ -9,6 +9,7 @@ import random
 
 # Numerical computing
 import numpy as np
+import pandas as pd
 
 # PyTorch
 import torch
@@ -327,7 +328,7 @@ class WMMDClassifier(pl.LightningModule):
         for attr in ('test_results', 'finish_time', 'epochs_trained'):
             if hasattr(self, attr):
                 payload[attr] = getattr(self, attr)
-        torch.save(payload, ckpt_path)
+        #torch.save(payload, ckpt_path)
 
         stats_path = os.path.join(folder, f"{timestamp}.txt")
         raw_hparams = dict(self.hparams)
@@ -657,6 +658,7 @@ def train_finetune(cfg, early_stopping=False):
             check_val_every_n_epoch=1,
             num_sanity_val_steps=0,
             enable_progress_bar=False, log_every_n_steps=50,
+            enable_checkpointing=False,
             callbacks=callbacks
         )
 
@@ -666,6 +668,7 @@ def train_finetune(cfg, early_stopping=False):
         model.test_results = test_res
         model.finish_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         model.epochs_trained = trainer.current_epoch + 1
+
         model.save_model()
 
         metrics_map = {
@@ -694,3 +697,33 @@ def train_finetune(cfg, early_stopping=False):
             plt.close()
 
         print(f"Completed {cfg['backbone']} ({'FT' if cfg['finetune'] else 'Frozen'}), artifacts in {model._last_save_dir}")
+
+
+def aggregate_metrics(model_name, dir, start_time):
+    print(f"\nAggregating results from '{dir}'...")
+
+    csv_files_from_this_run = []
+    for root, dirs, files in os.walk(dir):
+        if "metrics.csv" in files:
+            # Check if the parent 'version_X' folder was created after our run started
+            dir_creation_time = datetime.datetime.fromtimestamp(os.path.getctime(root))
+            if dir_creation_time > start_time:
+                csv_files_from_this_run.append(os.path.join(root, "metrics.csv"))
+
+    if not csv_files_from_this_run:
+        print("No recent 'metrics.csv' files found from this run.")
+    else:
+        print(f"Found {len(csv_files_from_this_run)} relevant log files to aggregate.")
+
+        all_metrics_dfs = [pd.read_csv(f) for f in csv_files_from_this_run]
+        stacked_data = np.stack([df.to_numpy() for df in all_metrics_dfs], axis=0)
+
+        mean_data = np.nanmean(stacked_data, axis=0)
+        std_data = np.nanstd(stacked_data, axis=0)
+
+        mean_df = pd.DataFrame(mean_data, columns=all_metrics_dfs[0].columns)
+        std_df = pd.DataFrame(std_data, columns=all_metrics_dfs[0].columns)
+
+        mean_df.to_csv(f"notebook/downstream/ft_lp_results/_aggregate results/{model_name}-mean.csv", index=False)
+        std_df.to_csv(f"notebook/downstream/ft_lp_results/_aggregate results/{model_name}-std.csv", index=False)
+        print(f"\nAggregated results saved to 'notebook/downstream/ft_lp_results/_aggregate results/{model_name}-mean.csv' and 'notebook/downstream/ft_lp_results/_aggregate results/{model_name}-std.csv'")

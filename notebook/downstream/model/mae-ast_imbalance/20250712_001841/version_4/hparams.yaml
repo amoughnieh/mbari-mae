@@ -1,0 +1,40 @@
+backbone: mae-ast
+backbone_lr: 1.0e-05
+ckpt_path: notebook/downstream/load_model/2en1de.pt
+class_weights: !!python/object/apply:numpy._core.multiarray._reconstruct
+  args:
+  - !!python/name:numpy.ndarray ''
+  - !!python/tuple
+    - 0
+  - !!binary |
+    Yg==
+  state: !!python/tuple
+  - 1
+  - !!python/tuple
+    - 31
+  - !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - false
+  - !!binary |
+    I8fElpX+7T/cb7/99tv3P3/J8pcsf/E/f8nylyx/AUAppZRSSintPyc+tVthoOs/KGi5SK/u8D8j
+    x8SWlf7tP3/J8pcsf/E/upl6JUcw5D8/Luzjwj7qP3b8On4dv/I/Jz61W2Gg6z9I+6P90f74P997
+    77333hVASPuj/dH+6D8nPrVbYaDrPz8u7OPCPgpAf8nylyx/8T/nnHPOOWfwPz8u7OPCPuo/f8ny
+    lyx/8T9/yfKXLH/xPz8u7OPCPuo/f8nylyx/AUBUt0N1O1TnP2MF6T/ebd4/GUX6/bNs5T8KxO6v
+    ZtL2P+Cu6M9s4O4/0D///PPP7z8=
+finetune: true
+head_lr: 0.0001
+max_epochs: 20
+num_classes: 31
+weight_decay: 0.05

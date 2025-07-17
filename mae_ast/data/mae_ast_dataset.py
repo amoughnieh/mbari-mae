@@ -88,9 +88,6 @@ class MAE_AST_Dataset(FairseqDataset):
             f"normalize={normalize}, max_sample_size={self.max_sample_size}"
         )
 
-        ######## ADDED CODE BY ALI #########
-
-        # Define the Mel Spectrogram transform
         self.mel_spectrogram_transform = torchaudio.transforms.MelSpectrogram(
             sample_rate=self.sample_rate,
             n_fft=1024,
@@ -98,9 +95,6 @@ class MAE_AST_Dataset(FairseqDataset):
             hop_length=20,
             n_mels=self.feature_dim
         )
-
-        ######## END OF ADDED CODE #########
-
 
     def get_audio(self, index):
         import soundfile as sf
